@@ -15,10 +15,40 @@ return {
     opts = {},
   },
   {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-refactor",
+      "nvim-treesitter/nvim-treesitter-context",
+    },
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        ensure_installed = { "c", "cpp", "lua", "python", "rust" },
+        refactor = {
+          highlight_definition = { enable = true },
+          highlight_current_scope = { enable = true },
+          smart_rename = {
+            enable = true,
+            keymaps = {
+              smart_rename = "grr"
+            }
+          }
+        }
+      }
+    end
+  },
+  {
+    "folke/twilight.nvim",
+   -- Don't forget to set up the keymapping! 
+    opts = {},
+  },
+  {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
     build = "make install_jsregexp",
-    dependencies = { "rafamadriz/friendly-snippets" },
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
     config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
     end
