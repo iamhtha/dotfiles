@@ -74,3 +74,25 @@ vim.api.nvim_create_autocmd("FileType", {
   }
 )
 
+-- PLUGINS
+require("lazy").setup {
+  spec = {
+    { import = "plugins" },
+  },
+  install = { colorscheme = { "gruvbox" } },
+  checker = { enabled = true },
+}
+
+-- Automatic update of plugins
+local function augroup(name)
+  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    group = augroup("autoupdate"),
+    callback = function()
+        if require("lazy.status").has_updates then
+            require("lazy").update({ show = false, })
+        end
+    end,
+})

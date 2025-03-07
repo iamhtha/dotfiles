@@ -1,2 +1,12 @@
-require("mini.jump").setup()
-require("mini.jump2d").setup()
+return {
+  {
+    "echasnovski/mini.jump",
+    version = false,
+    opts = {},
+  },
+  {
+    "echasnovski/mini.jump2d",
+    version = false,
+    opts = {},
+  }
+}
