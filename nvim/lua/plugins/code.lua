@@ -95,9 +95,9 @@ return {
     opts = {
       ensure_installed = {
         -- LINTERS
-        "ruff",
+        "codespell",
+        "commitlint",
         "mypy",
-        "selene",
         -- FORMATTERS
         "clang-format",
       },
@@ -176,6 +176,23 @@ return {
     "rcarriga/nvim-dap-ui",
     dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
   },
+  {
   "nvimtools/none-ls.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
+  config = function()
+    local null_ls = require("null-ls")
+    null_ls.setup({
+      sources = {
+        null_ls.builtins.code_actions.textlint,
+        null_ls.builtins.completion.luasnip,
+        null_ls.builtins.diagnostics.codespell,
+        null_ls.builtins.diagnostics.commitlint,
+        null_ls.builtins.diagnostics.mypy,
+        -- null_ls.builtins.diagnostics.selene,
+        null_ls.builtins.formatting.clang_format,
+      }
+    })
+  end
+  },
   "danymat/neogen",
 }
