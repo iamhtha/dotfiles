@@ -15,6 +15,11 @@ return {
     opts = {},
   },
   {
+    "folke/twilight.nvim",
+   -- Don't forget to set up the keymapping! 
+    opts = {},
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     dependencies = {
@@ -32,15 +37,20 @@ return {
             keymaps = {
               smart_rename = "grr"
             }
+          },
+          navigation = {
+            enable = true,
+            keymaps = {
+              goto_definition = "gnd",
+              list_definitions = "gnD",
+              list_definitions_toc = "gO",
+              goto_next_usage = "<a-*>",
+              goto_previous_usage = "<a-#>",
+            }
           }
-        }
+        },
       }
     end
-  },
-  {
-    "folke/twilight.nvim",
-   -- Don't forget to set up the keymapping! 
-    opts = {},
   },
   {
     "L3MON4D3/LuaSnip",
@@ -174,7 +184,28 @@ return {
   },
   {
     "rcarriga/nvim-dap-ui",
-    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "theHamsta/nvim-dap-virtual-text",
+      "nvim-neotest/nvim-nio",
+    },
+    config = function()
+      require("nvim-dap-virtual-text").setup()
+    end,
+    keys = {
+      { "<F5>", "<CMD>lua require('dap').continue()<CR>", desc = "Start/continue debug" },
+      { "<S-F5>", "<CMD>lua require('dap').terminate()<CR>", desc = "Stop debugger" },
+      { "<F9>", "<CMD>lua require('dap').toggle_breakpoint()<CR>", desc = "Toggle breakpoint" },
+      { "<F10>", "<CMD>lua require('dap').step_over()<CR>", desc = "Step over" },
+      { "<F11>", "<CMD>lua require('dap').step_into()<CR>", desc = "Step into" },
+      { "<S-F11>", "<CMD>lua require('dap').step_out()<CR>", desc = "Step out" },
+    }
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    config = function()
+      require("dap-python").setup("uv")
+    end
   },
   {
   "nvimtools/none-ls.nvim",
@@ -188,7 +219,6 @@ return {
         null_ls.builtins.diagnostics.codespell,
         null_ls.builtins.diagnostics.commitlint,
         null_ls.builtins.diagnostics.mypy,
-        -- null_ls.builtins.diagnostics.selene,
         null_ls.builtins.formatting.clang_format,
       }
     })
