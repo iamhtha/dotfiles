@@ -6,4 +6,9 @@ return {
       require("better_escape").setup()
     end,
   },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {},
+  }
 }

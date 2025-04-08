@@ -191,29 +191,15 @@ return {
     },
     config = function()
       require("nvim-dap-virtual-text").setup()
-      vim.fn.sign_define('DapBreakpoint', {text='🛑', texthl='', linehl='', numhl=''})
-
+      vim.fn.sign_define("DapBreakpoint", {text="🛑", texthl="", linehl="", numhl=""})
     end,
-    keys = {
-      { "<F5>", "<CMD>DapContinue<CR>", mode = { "n", "i", "v", "s" }, desc = "Start/continue debug" },
-      { "<C-F5>", "<CMD>lua require('dap').run_to_cursor()<CR>", mode = { "n", "i", "v", "s" }, desc = "Run to cursor" },
-      { "<S-F5>", "<CMD>DapTerminate<CR>", mode = { "n", "i", "v", "s" }, desc = "Stop debugger" },
-      { "<C-S-F5>", "<CMD>lua require('dap').restart()<CR>", mode = { "n", "i", "v", "s" }, desc = "Restart debugger" },
-      { "<F9>", "<CMD>DapToggleBreakpoint<CR>", mode = { "n", "i", "v", "s" }, desc = "Toggle breakpoint" },
-      { "<S-F9>", "<CMD>DapClearBreakPoints<CR>", mode = { "n", "i", "v", "s" }, desc = "Clear breakpoints" },
-      { "<C-S-F9>", "<CMD>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", mode = { "n", "i", "v", "s" }, desc = "Set conditional breakpoint" },
-      { "<F10>", "<CMD>DapStepOver<CR>", mode = { "n", "i", "v", "s" }, desc = "Step over" },
-      { "<F11>", "<CMD>DapSetpInto<CR>", mode = { "n", "i", "v", "s" }, desc = "Step into" },
-      { "<S-F11>", "<CMD>DapStepOut<CR>", mode = { "n", "i", "v", "s" }, desc = "Step out" },
-      { "dr", "<CMD>DapToggleRepl<CR>", mode = { "n", "i", "v", "s" }, desc = "Toggle REPL" },
-      { "dp", "<CMD>lua require('dap.ui.widgets').preview()<CR>", mode = { "n", "i", "v", "s" }, desc = "Preview in debug" },
-      { "dK", "<CMD>lua require('dap.ui.widgets').hover()<CR>", mode = { "n", "i", "v", "s" }, desc = "Hover in debug" },
-    }
   },
   {
     "mfussenegger/nvim-dap-python",
     config = function()
-      require("dap-python").setup("uv")
+      local dappy = require("dap-python")
+      dappy.setup("uv")
+      dappy.test_runner = "pytest"
     end
   },
   {
@@ -235,3 +221,4 @@ return {
   },
   "danymat/neogen",
 }
+
