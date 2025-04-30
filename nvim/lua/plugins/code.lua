@@ -1,10 +1,5 @@
 return {
   {
-    "echasnovski/mini.comment",
-    version = false,
-    opts = {},
-  },
-  {
     "echasnovski/mini.pairs",
     version = false,
     opts = {},
@@ -279,6 +274,12 @@ return {
   {
     "folke/trouble.nvim",
     opts = {}
+  },
+  {
+    "michaelb/sniprun",
+  },
+  {
+    "stevearc/overseer.nvim",
   }
 }
 

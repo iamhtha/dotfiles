@@ -9,4 +9,5 @@ return {
     version = false,
     opts = {},
   }
+  -- TODO: "MagicDuck/grug-far.nvim"
 }

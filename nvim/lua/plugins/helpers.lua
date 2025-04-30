@@ -1,4 +1,3 @@
--- Key clues
 return {
   {
     "max397574/better-escape.nvim",
@@ -14,5 +13,17 @@ return {
   {
     "meznaric/key-analyzer.nvim",
     opts = {},
+  },
+  {
+    "AckslD/nvim-neoclip.lua",
+  },
+  {
+    "ibhagwan/fzf-lua",
+  },
+  {
+    "bassamsdata/namu.nvim",
+  },
+  {
+    "grug-far.nvim",
   }
 }

@@ -5,5 +5,8 @@ return {
       vim.o.background = "dark"
       vim.cmd([[colorscheme gruvbox]])
     end
+  },
+  {
+    "nvim-lualine/lualine.nvim",
   }
 }
