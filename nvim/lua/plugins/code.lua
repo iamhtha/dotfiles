@@ -54,7 +54,11 @@ return {
       "rafamadriz/friendly-snippets",
     },
     config = function()
+      local ls = require("luasnip")
       require("luasnip.loaders.from_vscode").lazy_load()
+      ls.setup {
+        update_events = {"TextChanged", "TextChangedI"},
+      }
     end
   },
   {

@@ -21,7 +21,10 @@ wk.add(
     { "dK", function() require("dap.ui.widgets").hover() end, mode = { "n" }, desc = "Hover in debug" },
     -- DAP UI
     { "du", function() require("dapui").toggle() end, mode = { "n" }, desc = "Toggle REPL" },
-    -- TREESITTER
+    -- LuaSnip
+    { "<C-L>", function() require("luasnip").expand_or_jump() end, mode = { "i", "s" }, desc = "Toggle REPL" },
+    { "<C-H>", function() require("luasnip").jump(-1) end, mode = { "i", "s" }, desc = "Toggle REPL" },
+    -- Treesitter
     { "grr", desc = "Smart rename" },
     { "gnd", desc = "Go to definition" },
     { "gnD", desc = "List definitions" },

@@ -24,6 +24,6 @@ return {
     "bassamsdata/namu.nvim",
   },
   {
-    "grug-far.nvim",
+    "MagicDuck/grug-far.nvim",
   }
 }
