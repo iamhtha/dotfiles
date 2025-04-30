@@ -16,7 +16,6 @@ return {
   },
   {
     "folke/twilight.nvim",
-   -- Don't forget to set up the keymapping! 
     opts = {},
   },
   {
@@ -183,15 +182,59 @@ return {
     end
   },
   {
+    "mfussenegger/nvim-dap",
+    config = function()
+      local dap = require("dap")
+      -- CodeLLDB adapter
+      dap.adapters.codelldb = {
+        type = "executable",
+        command = "codelldb",
+      }
+      -- Settings for C/C++/Rust
+      dap.configurations.cpp = {
+        {
+          name = "Launch file",
+          type = "codelldb",
+          request = "launch",
+          program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+          end,
+          cwd = '${workspaceFolder}',
+          stopOnEntry = false,
+        },
+      }
+      dap.configurations.c = dap.configurations.cpp
+      dap.configurations.rust = dap.configurations.cpp
+    end
+  },
+  {
     "rcarriga/nvim-dap-ui",
     dependencies = {
-      "mfussenegger/nvim-dap",
       "theHamsta/nvim-dap-virtual-text",
       "nvim-neotest/nvim-nio",
+      "folke/lazydev.nvim",
     },
     config = function()
+      -- Setup dependencies first
       require("nvim-dap-virtual-text").setup()
       vim.fn.sign_define("DapBreakpoint", {text="🛑", texthl="", linehl="", numhl=""})
+      require("lazydev").setup({
+        library = { "nvim-dap-ui"},
+      })
+      local dap, dapui = require("dap"), require("dapui")
+      dapui.setup()
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
     end,
   },
   {
@@ -203,22 +246,39 @@ return {
     end
   },
   {
-  "nvimtools/none-ls.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  config = function()
-    local null_ls = require("null-ls")
-    null_ls.setup({
-      sources = {
-        null_ls.builtins.code_actions.textlint,
-        null_ls.builtins.completion.luasnip,
-        null_ls.builtins.diagnostics.codespell,
-        null_ls.builtins.diagnostics.commitlint,
-        null_ls.builtins.diagnostics.mypy,
-        null_ls.builtins.formatting.clang_format,
-      }
-    })
-  end
+    "nvimtools/none-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.code_actions.textlint,
+          null_ls.builtins.completion.luasnip,
+          null_ls.builtins.diagnostics.codespell,
+          null_ls.builtins.diagnostics.commitlint,
+          null_ls.builtins.diagnostics.mypy,
+          null_ls.builtins.formatting.clang_format,
+        }
+      })
+    end
   },
-  "danymat/neogen",
+  {
+    "danymat/neogen",
+    config = function()
+      require("neogen").setup {
+        enabled = true,
+        snippet_engine = "luasnip",
+        languages = {
+          ["c.doxygen"] = require("neogen.configurations.c"),
+          ["cpp.doxygen"] = require("neogen.configurations.cpp"),
+          ["google_docstring"] = require("neogen.configurations.python"),
+        }
+      }
+    end
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {}
+  }
 }
 

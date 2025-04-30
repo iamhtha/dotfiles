@@ -14,15 +14,20 @@ wk.add(
     { "<F10>", "<cmd>DapStepOver<cr>", mode = { "n", "i", "v", "s" }, desc = "Step over" },
     { "<F11>", "<cmd>DapSetpInto<cr>", mode = { "n", "i", "v", "s" }, desc = "Step into" },
     { "<S-F11>", "<cmd>DapStepOut<cr>", mode = { "n", "i", "v", "s" }, desc = "Step out" },
-    { "<F12>", function() require("dap-python").test_method() end, mode = { "n", "i", "v", "s" }, dec = "Test method (Python)"},
-    { "<S-F12>", function() require("dap-python").test_class() end, mode = { "n", "i", "v", "s" }, dec = "Test class (Python)"},
-    { "dr", "<cmd>DapToggleRepl<cr>", mode = { "n", "i", "v", "s" }, desc = "Toggle REPL" },
-    { "dp", function() require("dap.ui.widgets").preview() end, mode = { "n", "i", "v", "s" }, desc = "Preview in debug" },
-    { "dK", function() require("dap.ui.widgets").hover() end, mode = { "n", "i", "v", "s" }, desc = "Hover in debug" },
+    { "<F12>", function() require("dap-python").test_method() end, mode = { "n", "i", "v", "s" }, desc = "Test method (Python)"},
+    { "<S-F12>", function() require("dap-python").test_class() end, mode = { "n", "i", "v", "s" }, desc = "Test class (Python)"},
+    { "dr", "<cmd>DapToggleRepl<cr>", mode = { "n" }, desc = "Toggle REPL" },
+    { "dp", function() require("dap.ui.widgets").preview() end, mode = { "n" }, desc = "Preview in debug" },
+    { "dK", function() require("dap.ui.widgets").hover() end, mode = { "n" }, desc = "Hover in debug" },
+    -- DAP UI
+    { "du", function() require("dapui").toggle() end, mode = { "n" }, desc = "Toggle REPL" },
     -- TREESITTER
     { "grr", desc = "Smart rename" },
     { "gnd", desc = "Go to definition" },
     { "gnD", desc = "List definitions" },
-    { "g0", desc = "List definitions ToC"}
+    { "g0", desc = "List definitions ToC"},
+    -- TWILIGHT
+    { "<A-t>", "<cmd>Twilight<cr>", mode = { "n", "i", "v", "s" }, desc = "Toggle Twilight"}
   }
+  -- TODO: LUASNIP, BLINK, LSPCONFIG, NEOTEST, TROUBLE
 )
