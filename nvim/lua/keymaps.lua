@@ -21,44 +21,6 @@ wk.add(
     { "dK", function() require("dap.ui.widgets").hover() end, mode = { "n" }, desc = "Hover in debug" },
     -- DAP UI
     { "du", function() require("dapui").toggle() end, mode = { "n" }, desc = "Toggle REPL" },
-    -- LuaSnip
-    {
-      "<C-l>",
-      function()
-        if require("luasnip").expand_or_jumpable() then
-          require("luasnip").expand_or_jump()
-        end
-      end,
-      mode = { "i", "s" }, desc = "Expand or jump to the next node",
-    },
-    {
-      "<C-h>",
-      function()
-        if require("luasnip").jumpable(-1) then
-          require("luasnip").jump(-1)
-        end
-      end,
-      mode = { "i", "s" },
-      desc = "Jump to previous node",
-    },
-    {
-      "<C-S-c>",
-      function()
-        if require("luasnip").choice_active() then
-          require("luasnip").change_choice(-1)
-        end
-      end,
-      mode = { "i", "s" }, desc = "Previous choice in the innermost currently active choiceNode",
-    },
-    {
-      "<C-c>",
-      function()
-        if require("luasnip").choice_active() then
-          require("luasnip").change_choice(1)
-        end
-      end,
-      mode = { "i", "s" }, desc = "Next choice in the innermost currently active choiceNode",
-    },
     -- Treesitter
     { "grr", desc = "Smart rename" },
     { "gnd", desc = "Go to definition" },
