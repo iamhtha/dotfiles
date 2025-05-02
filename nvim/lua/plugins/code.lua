@@ -65,11 +65,30 @@ return {
     "saghen/blink.cmp",
     version = "*",
     opts = {
-      keymap = { preset = "default" },
+      keymap = {
+        preset = "default",
+          ["<A-1>"] = { function(cmp) cmp.accept({ index = 1 }) end },
+          ["<A-2>"] = { function(cmp) cmp.accept({ index = 2 }) end },
+          ["<A-3>"] = { function(cmp) cmp.accept({ index = 3 }) end },
+          ["<A-4>"] = { function(cmp) cmp.accept({ index = 4 }) end },
+          ["<A-5>"] = { function(cmp) cmp.accept({ index = 5 }) end },
+          ["<A-6>"] = { function(cmp) cmp.accept({ index = 6 }) end },
+          ["<A-7>"] = { function(cmp) cmp.accept({ index = 7 }) end },
+          ["<A-8>"] = { function(cmp) cmp.accept({ index = 8 }) end },
+          ["<A-9>"] = { function(cmp) cmp.accept({ index = 9 }) end },
+          ["<A-0>"] = { function(cmp) cmp.accept({ index = 10 }) end },
+      },
       appearance = { nerd_font_variant = "mono" },
       snippets = { preset = "luasnip" },
       signature = { enabled = true },
-      fuzzy = { implementation = "prefer_rust_with_warning"}
+      fuzzy = {
+        implementation = "prefer_rust_with_warning",
+        sorts = {
+          "exact",
+          "score",
+          "score_text",
+        }
+      }
     },
   },
   {
