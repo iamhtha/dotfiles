@@ -22,7 +22,6 @@ wk.add(
     -- DAP UI
     { "du", function() require("dapui").toggle() end, mode = { "n" }, desc = "Toggle REPL" },
     -- Treesitter
-    { "grr", desc = "Smart rename" },
     { "gnd", desc = "Go to definition" },
     { "gnD", desc = "List definitions" },
     { "g0", desc = "List definitions ToC"},

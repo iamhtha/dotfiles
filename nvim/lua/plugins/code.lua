@@ -26,12 +26,6 @@ return {
         refactor = {
           highlight_definition = { enable = true },
           highlight_current_scope = { enable = true },
-          smart_rename = {
-            enable = true,
-            keymaps = {
-              smart_rename = "grr"
-            }
-          },
           navigation = {
             enable = true,
             keymaps = {
