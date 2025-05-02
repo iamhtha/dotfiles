@@ -86,7 +86,7 @@ return {
         sorts = {
           "exact",
           "score",
-          "score_text",
+          "sort_text",
         }
       }
     },
