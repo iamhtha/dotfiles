@@ -43,10 +43,8 @@ wk.add(
     { "dK", function() require("dap.ui.widgets").hover() end, mode = { "n" }, desc = "Hover in debug" },
     -- DAP UI
     { "du", function() require("dapui").toggle() end, mode = { "n" }, desc = "Toggle REPL" },
-    -- Treesitter
-    { "gnd", desc = "Go to definition" },
-    { "gnD", desc = "List definitions" },
-    { "g0", desc = "List definitions ToC"},
+    -- -- LSP
+    -- { "gd", function() require("dapui").toggle() end, mode = { "n" }, desc = "Toggle REPL" },
     -- Twilight
     { "<A-t>", "<cmd>Twilight<cr>", mode = { "n", "i", "v", "s" }, desc = "Toggle Twilight"}
   }

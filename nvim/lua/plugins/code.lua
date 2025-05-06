@@ -138,6 +138,7 @@ return {
     opts = {
       servers = {
         clangd = {},
+        -- Shamelessly copied from https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
         lua_ls = {
           on_init = function(client)
             if client.workspace_folders then
@@ -149,21 +150,13 @@ return {
 
             client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
               runtime = {
-                -- Tell the language server which version of Lua you're using
-                -- (most likely LuaJIT in the case of Neovim)
                 version = "LuaJIT"
               },
-              -- Make the server aware of Neovim runtime files
               workspace = {
                 checkThirdParty = false,
                 library = {
                   vim.env.VIMRUNTIME
-                  -- Depending on the usage, you might want to add additional paths here.
-                  -- "${3rd}/luv/library"
-                  -- "${3rd}/busted/library",
                 }
-                -- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
-                -- library = vim.api.nvim_get_runtime_file("", true)
               }
             })
           end,
@@ -172,6 +165,7 @@ return {
           }
         },
         pyright = {},
+        -- Shamelessly copied from https://docs.astral.sh/ruff/editors/setup/#neovim
         ruff = {
           settings = {
             vim.api.nvim_create_autocmd("LspAttach", {
