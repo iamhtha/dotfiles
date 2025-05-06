@@ -32,8 +32,8 @@ return {
               goto_definition = "gnd",
               list_definitions = "gnD",
               list_definitions_toc = "gO",
-              goto_next_usage = "<a-*>",
-              goto_previous_usage = "<a-#>",
+              goto_next_usage = "<A-*>",
+              goto_previous_usage = "<A-#>",
             }
           }
         },
@@ -75,6 +75,15 @@ return {
       appearance = { nerd_font_variant = "mono" },
       snippets = { preset = "luasnip" },
       signature = { enabled = true },
+
+      completion = {
+        documentation = {
+          auto_show = true,
+        },
+        ghost_text = {
+          enabled = true,
+        },
+      },
       fuzzy = {
         implementation = "prefer_rust_with_warning",
         sorts = {
@@ -82,7 +91,7 @@ return {
           "score",
           "sort_text",
         }
-      }
+      },
     },
   },
   {

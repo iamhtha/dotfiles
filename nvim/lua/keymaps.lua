@@ -2,6 +2,28 @@ local wk = require("which-key")
 wk.add(
   {
     { "<leader>?", function() require("which-key").show() end, desc = "Buffer keymaps" },
+    -- blink.cmp (basically default settings)
+    { "<C-space>", mode = { "i" }, desc = "Show completion list or documentation or hide documentation" },
+    { "<C-e>", mode = { "i" }, desc = "Hide completion list" },
+    { "<Up>", mode = { "i" }, desc = "Select previous suggestion" },
+    { "<C-p>", mode = { "i" }, desc = "Select previous suggestion" },
+    { "<Down>", mode = { "i" }, desc = "Select next suggestion" },
+    { "<C-n>", mode = { "i" }, desc = "Select next suggestion" },
+    { "<C-b>", mode = { "i" }, desc = "Scroll documentation up" },
+    { "<C-f>", mode = { "i" }, desc = "Scroll documentation down" },
+    { "<Tab>", mode = { "i", "s" }, desc = "Snippet forward" },
+    { "<S-Tab>", mode = { "i", "s" }, desc = "Snippet backwards" },
+    { "<C-k>", mode = { "i", "s" }, desc = "Show signature" },
+    { "<A-1>", mode = { "i", "s" }, desc = "Select 1st suggestion" },
+    { "<A-2>", mode = { "i", "s" }, desc = "Select 2nd suggestion" },
+    { "<A-3>", mode = { "i", "s" }, desc = "Select 3th suggestion" },
+    { "<A-4>", mode = { "i", "s" }, desc = "Select 4th suggestion" },
+    { "<A-5>", mode = { "i", "s" }, desc = "Select 5th suggestion" },
+    { "<A-6>", mode = { "i", "s" }, desc = "Select 6th suggestion" },
+    { "<A-7>", mode = { "i", "s" }, desc = "Select 7th suggestion" },
+    { "<A-8>", mode = { "i", "s" }, desc = "Select 8th suggestion" },
+    { "<A-9>", mode = { "i", "s" }, desc = "Select 9th suggestion" },
+    { "<A-0>", mode = { "i", "s" }, desc = "Select 10th suggestion" },
     -- DAP
     { "<F5>", "<cmd>DapContinue<cr>", mode = { "n", "i", "v" }, desc = "Start/continue debug" },
     { "<F5>", function() require("dap-python").debug_selection() end, mode = { "s" }, desc = "Debug the code (Python)" },
@@ -25,8 +47,8 @@ wk.add(
     { "gnd", desc = "Go to definition" },
     { "gnD", desc = "List definitions" },
     { "g0", desc = "List definitions ToC"},
-    -- TWILIGHT
+    -- Twilight
     { "<A-t>", "<cmd>Twilight<cr>", mode = { "n", "i", "v", "s" }, desc = "Toggle Twilight"}
   }
-  -- TODO: LUASNIP, BLINK, LSPCONFIG, NEOTEST, TROUBLE
+  -- TODO: LSPCONFIG, NEOTEST, TROUBLE
 )
