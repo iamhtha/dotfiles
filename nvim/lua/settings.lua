@@ -13,12 +13,14 @@ vim.opt.title = true
 vim.opt.linebreak = true
 -- Enable line wrapping.
 vim.opt.wrap = true
--- Allow spelling
+-- Allow spelling.
 vim.opt.spell = true
--- Spelling in English
+-- Spelling in English.
 vim.opt.spelllang = "en_us"
--- Enable 24-bit RGB in the TUI
+-- Enable 24-bit RGB in the TUI.
 vim.opt.termguicolors = true
+-- Time in milliseconds to wait for a mapped sequence to complete.
+vim.opt.timeoutlen = 100
 
 -- INDENTATION
 -- Automatic indentation.
