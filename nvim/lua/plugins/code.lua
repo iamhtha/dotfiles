@@ -31,9 +31,9 @@ return {
             keymaps = {
               goto_definition = "gnd",
               list_definitions = "gnD",
-              list_definitions_toc = "gO",
-              goto_next_usage = "<A-*>",
-              goto_previous_usage = "<A-#>",
+              list_definitions_toc = "gnO",
+              goto_next_usage = "gnn",
+              goto_previous_usage = "gnp",
             }
           }
         },
@@ -51,7 +51,7 @@ return {
       local ls = require("luasnip")
       require("luasnip.loaders.from_vscode").lazy_load()
       ls.setup {
-        update_events = {"TextChanged", "TextChangedI"},
+        update_events = { "TextChanged", "TextChangedI" },
       }
     end
   },
@@ -61,16 +61,16 @@ return {
     opts = {
       keymap = {
         preset = "default",
-          ["<A-1>"] = { function(cmp) cmp.accept({ index = 1 }) end },
-          ["<A-2>"] = { function(cmp) cmp.accept({ index = 2 }) end },
-          ["<A-3>"] = { function(cmp) cmp.accept({ index = 3 }) end },
-          ["<A-4>"] = { function(cmp) cmp.accept({ index = 4 }) end },
-          ["<A-5>"] = { function(cmp) cmp.accept({ index = 5 }) end },
-          ["<A-6>"] = { function(cmp) cmp.accept({ index = 6 }) end },
-          ["<A-7>"] = { function(cmp) cmp.accept({ index = 7 }) end },
-          ["<A-8>"] = { function(cmp) cmp.accept({ index = 8 }) end },
-          ["<A-9>"] = { function(cmp) cmp.accept({ index = 9 }) end },
-          ["<A-0>"] = { function(cmp) cmp.accept({ index = 10 }) end },
+        ["<A-1>"] = { function(cmp) cmp.accept({ index = 1 }) end },
+        ["<A-2>"] = { function(cmp) cmp.accept({ index = 2 }) end },
+        ["<A-3>"] = { function(cmp) cmp.accept({ index = 3 }) end },
+        ["<A-4>"] = { function(cmp) cmp.accept({ index = 4 }) end },
+        ["<A-5>"] = { function(cmp) cmp.accept({ index = 5 }) end },
+        ["<A-6>"] = { function(cmp) cmp.accept({ index = 6 }) end },
+        ["<A-7>"] = { function(cmp) cmp.accept({ index = 7 }) end },
+        ["<A-8>"] = { function(cmp) cmp.accept({ index = 8 }) end },
+        ["<A-9>"] = { function(cmp) cmp.accept({ index = 9 }) end },
+        ["<A-0>"] = { function(cmp) cmp.accept({ index = 10 }) end },
       },
       appearance = { nerd_font_variant = "mono" },
       snippets = { preset = "luasnip" },
@@ -143,7 +143,7 @@ return {
           on_init = function(client)
             if client.workspace_folders then
               local path = client.workspace_folders[1].name
-              if path ~= vim.fn.stdpath("config") and (vim.loop.fs_stat(path.."/.luarc.json") or vim.loop.fs_stat(path.."/.luarc.jsonc")) then
+              if path ~= vim.fn.stdpath("config") and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc")) then
                 return
               end
             end
@@ -232,9 +232,9 @@ return {
     config = function()
       -- Setup dependencies first
       require("nvim-dap-virtual-text").setup()
-      vim.fn.sign_define("DapBreakpoint", {text="🛑", texthl="", linehl="", numhl=""})
+      vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
       require("lazydev").setup({
-        library = { "nvim-dap-ui"},
+        library = { "nvim-dap-ui" },
       })
       local dap, dapui = require("dap"), require("dapui")
       dapui.setup()
@@ -302,4 +302,3 @@ return {
     "stevearc/overseer.nvim",
   }
 }
-

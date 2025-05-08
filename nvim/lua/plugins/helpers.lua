@@ -25,10 +25,10 @@ return {
       keymap = {
         fzf = {
           true,
-          ["ctrl-h"] = "abort",
-          ["ctrl-j"] = "down",
-          ["ctrl-k"] = "up",
-          ["ctrl-l"] = "accept",
+          ["ctrl-e"] = "abort",
+          ["ctrl-n"] = "down",
+          ["ctrl-p"] = "up",
+          ["ctrl-y"] = "accept",
         }
       }
     },

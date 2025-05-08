@@ -3,13 +3,15 @@ wk.add(
   {
     { "<leader>", group = "Plugins" },
     { "<leader>?", require("which-key").show, desc = "Buffer keymaps", noremap = true, silent = true },
+    -- General
+    { "<C-e>", mode = { "i", "s" }, desc = "Cancel/abort (blink.cmp, fzf-lua)", noremap = true, silent = true },
+    { "<up>", mode = { "i", "s" }, desc = "Go to previous or go up (blink.cmp, fzf-lua)", noremap = true, silent = true },
+    { "<C-p>", mode = { "i", "s" }, desc = "Go to previous or go up (blink.cmp, fzf-lua)", noremap = true, silent = true },
+    { "<down>", mode = { "i", "s" }, desc = "Go to next or go down (blink.cmp, fzf-lua)", noremap = true, silent = true },
+    { "<C-n>", mode = { "i", "s" }, desc = "Go to next or go down (blink.cmp, fzf-lua)", noremap = true, silent = true },
+    { "<C-y>", mode = { "i", "s" }, desc = "Accept (blink.cmp, fzf-lua)", noremap = true, silent = true },
     -- blink.cmp (default settings)
     { "<C-space>", mode = { "i" }, desc = "Show completion list or documentation or hide documentation", noremap = true, silent = true },
-    { "<C-e>", mode = { "i" }, desc = "Hide completion list", noremap = true, silent = true },
-    { "<up>", mode = { "i" }, desc = "Select previous suggestion", noremap = true, silent = true },
-    { "<C-p>", mode = { "i" }, desc = "Select previous suggestion", noremap = true, silent = true },
-    { "<down>", mode = { "i" }, desc = "Select next suggestion", noremap = true, silent = true },
-    { "<C-n>", mode = { "i" }, desc = "Select next suggestion", noremap = true, silent = true },
     { "<C-b>", mode = { "i" }, desc = "Scroll documentation up", noremap = true, silent = true },
     { "<C-f>", mode = { "i" }, desc = "Scroll documentation down", noremap = true, silent = true },
     { "<tab>", mode = { "i", "s" }, desc = "Snippet forward", noremap = true, silent = true },
@@ -50,9 +52,22 @@ wk.add(
     { "<leader>fb", require("fzf-lua").buffers, mode = { "n" }, desc = "Fzf buffers", noremap = true, silent = true },
     { "<leader>ff", require("fzf-lua").files, mode = { "n" }, desc = "Fzf files", noremap = true, silent = true },
     { "<leader>fg", require("fzf-lua").live_grep, mode = { "n" }, desc = "Live grep current project", noremap = true, silent = true },
-    { "<leader>ft", require("fzf-lua").tabs, mode = { "n" }, desc = "Fzf tabs", noremap = true, silent = true },
     { "<leader>fr", require("fzf-lua").resume, mode = { "n" }, desc = "Resuming work from where left off", noremap = true, silent = true },
-    -- { "<leader>ft", require("trouble.sources.fzf").actions.open, mode = { "n" }, desc = "Fzf results in Trouble", noremap = true, silent = true },
+    { "<leader>fG", group = "Git" },
+    { "<leader>fGf", require("fzf-lua").git_files, mode = { "n" }, desc = "git ls-files", noremap = true, silent = true },
+    { "<leader>fGs", require("fzf-lua").git_status, mode = { "n" }, desc = "git status", noremap = true, silent = true },
+    { "<leader>fGc", require("fzf-lua").git_bcommits, mode = { "n" }, desc = "git commit log (in buffer)", noremap = true, silent = true },
+    { "<leader>fGC", require("fzf-lua").git_commits, mode = { "n" }, desc = "git commit log (in project)", noremap = true, silent = true },
+    { "<leader>fGb", require("fzf-lua").git_branches, mode = { "n" }, desc = "git branches", noremap = true, silent = true },
+    { "<leader>fGB", require("fzf-lua").git_blame, mode = { "n" }, desc = "git blame", noremap = true, silent = true },
+    { "<leader>fGt", require("fzf-lua").git_tags, mode = { "n" }, desc = "git tags", noremap = true, silent = true },
+    { "<leader>fGS", require("fzf-lua").git_stash, mode = { "n" }, desc = "git stash", noremap = true, silent = true },
+    { "<leader>fl", group = "LSP & diagnostics" },
+    { "<leader>fs", group = "Search" },
+    { "<leader>ft", group = "Tags" },
+    { "<leader>fx", group = "Extra"},
+    -- KeyAnalyzer
+    { "<leader>k", function() require("key-analyzer").show(vim.fn.input("Choose mode (n, i, v, s): "), vim.fn.input("Show mapping prefix (e.g: <leader>, <C-, etc.): ")) end, mode = { "n" }, desc = "Key Analyzer", noremap = true, silent = true },
     -- LSP
     { "K", mode = { "n" }, desc = "Display hover information about the symbol under the cursor in a floating window", noremap = true, silent = true },
     { "gD", vim.lsp.buf.declaration, mode = { "n" }, desc = "Jump to the declaration of the symbol under the cursor", noremap = true, silent = true },
@@ -65,12 +80,20 @@ wk.add(
     { "gri", mode = { "n" }, desc = "List all the implementations for the symbol under the cursor in the quickfix window", noremap = true, silent = true },
     { "grn", mode = { "n" }, desc = "Rename all references to the symbol under the cursor", noremap = true, silent = true },
     { "grs", vim.lsp.buf.document_symbol, mode = { "n" }, desc = "List all symbols in the current buffer in the location list", noremap = true, silent = true },
-    { "<C-k>", vim.diagnostic.open_float, mode = { "n", "i", "v", "s" }, desc = "Show diagnostics in a floating window.", noremap = true, silent = true },
     { "<C-s>", mode = { "i", "s" }, desc = "Display signature information about the symbol under the cursor in a floating window", noremap = true, silent = true },
     -- mini.jump2d
     { "<cr>", mode = { "n", "v" }, desc = "Jump within vsible lines", noremap = true, silent = true },
+    -- Treesitter
+    { "gn", group = "Treesitter keymaps" },
+    { "gnd", mode = "n", desc = "Go to definition" },
+    { "gnO", mode = "n", desc = "List definitions ToC" },
+    { "gnn", mode = "n", desc = "Go to next usage" },
+    { "gnp", mode = "n", desc = "Go to previous usage" },
+    -- Trouble
+    { "<leader>t", group = "Trouble keymaps" },
+    { "<leader>t", mode = { "n" }, desc = "", noremap = true, silent = true },
     -- Twilight
     { "<A-t>", "<cmd>Twilight<cr>", mode = { "n", "i", "v", "s" }, desc = "Toggle Twilight"}
   }
-  -- TODO: fzf, TROUBLE
 )
+-- TODO: read and add https://neovim.io/doc/user/vim_diff.html#default-mappings, add Trouble key bindings, add fzf-lua key bindings
