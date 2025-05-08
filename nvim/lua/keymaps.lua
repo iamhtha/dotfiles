@@ -60,15 +60,17 @@ wk.add(
     { "gO", mode = { "n" }, desc = "List all symbols in the current buffer in the location-list", noremap = true, silent = true },
     { "gr", mode = { "n" }, group = "LSP keymaps" },
     { "gra", mode = { "n" }, desc = "Select a code action available at the current cursor position", noremap = true, silent = true },
+    { "grd", vim.lsp.buf.type_definition, mode = { "n" }, desc = "Jump to the definition of the type of the symbol under the cursor", noremap = true, silent = true },
     { "grf", vim.lsp.buf.format, mode = { "n" }, desc = "Format a buffer using the attached (and optionally filtered) language server clients", noremap = true, silent = true },
     { "gri", mode = { "n" }, desc = "List all the implementations for the symbol under the cursor in the quickfix window", noremap = true, silent = true },
     { "grn", mode = { "n" }, desc = "Rename all references to the symbol under the cursor", noremap = true, silent = true },
     { "grs", vim.lsp.buf.document_symbol, mode = { "n" }, desc = "List all symbols in the current buffer in the location list", noremap = true, silent = true },
-    { "<C-s>", mode = { "i" }, desc = "Display signature information about the symbol under the cursor in a floating window", noremap = true, silent = true },
+    { "<C-k>", vim.diagnostic.open_float, mode = { "n", "i", "v", "s" }, desc = "Show diagnostics in a floating window.", noremap = true, silent = true },
+    { "<C-s>", mode = { "i", "s" }, desc = "Display signature information about the symbol under the cursor in a floating window", noremap = true, silent = true },
     -- mini.jump2d
     { "<cr>", mode = { "n", "v" }, desc = "Jump within vsible lines", noremap = true, silent = true },
     -- Twilight
     { "<A-t>", "<cmd>Twilight<cr>", mode = { "n", "i", "v", "s" }, desc = "Toggle Twilight"}
   }
-  -- TODO: LSPCONFIG, fzf, TROUBLE
+  -- TODO: fzf, TROUBLE
 )
