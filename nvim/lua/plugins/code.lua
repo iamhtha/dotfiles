@@ -293,7 +293,11 @@ return {
   },
   {
     "folke/trouble.nvim",
-    opts = {}
+    opts = {
+      win = {
+        relative = "editor"
+      }
+    }
   },
   {
     "michaelb/sniprun",
