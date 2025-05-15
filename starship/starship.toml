@@ -1,6 +1,23 @@
 "$schema" = "https://starship.rs/config-schema.json"
-format = "╭$os$all$line_break╰─$cmd_duration$character"
-right_format = "▓ $time ▓"
+format = """
+[╭](#ff8800)\
+[](bg:#777777 fg:#ff8800)\
+$os\
+$all\
+[](bg:#777777 fg:#ff8800)\
+[](#ff8800)\
+$line_break\
+[╰─](#ff8800)\
+[▓ ](bg:#777777 fg:#ff8800)\
+$battery\
+$cmd_duration\
+$character"""
+right_format = """
+[](black)\
+[▓ ](bg:yellow fg:black)\
+$time\
+[ ▓](bg:yellow fg:black)\
+[](black)"""
 continuation_prompt = "[∙](bright-black) "
 scan_timeout = 30
 command_timeout = 500
@@ -38,11 +55,11 @@ discharging_symbol = "󰂃 "
 unknown_symbol = "󰁽 "
 empty_symbol = "󰂎 "
 disabled = false
-format = "[$symbol$percentage]($style) "
+format = "[$symbol$percentage]($style)[](bg:yellow fg:#777777)"
 
 [[battery.display]]
-threshold = 10
-style = "red bold"
+threshold = 100
+style = "bg:#777777 fg:bright-white"
 
 [buf]
 format = "with [$symbol($version )]($style)"
@@ -100,12 +117,12 @@ commands = [
 
 [character]
 format = "$symbol "
-success_symbol = "[](bold green)"
-error_symbol = "[](bold red)"
-vimcmd_symbol = "[](bold green)"
-vimcmd_visual_symbol = "[](bold yellow)"
-vimcmd_replace_symbol = "[](bold purple)"
-vimcmd_replace_one_symbol = "[](bold purple)"
+success_symbol = "[ ▓](bg:yellow fg:green)[](green)"
+error_symbol = "[ ▓](bg:yellow fg:red)[](red)"
+vimcmd_symbol = "[ ▓](bg:yellow fg:green)[](green)"
+vimcmd_visual_symbol = "[ ▓](bg:yellow fg:yellow)[](yellow)"
+vimcmd_replace_symbol = "[ ▓](bg:yellow fg:purple)[](purple)"
+vimcmd_replace_one_symbol = "[ ▓](bg:yellow fg:purple)[](purple)"
 disabled = false
 
 [cmake]
@@ -123,8 +140,8 @@ detect_folders = []
 
 [cmd_duration]
 min_time = 2000
-format = "⌛[$duration]($style) "
-style = "yellow bold"
+format = "[⌛$duration]($style)"
+style = "bg:yellow fg:bold black"
 show_milliseconds = false
 disabled = false
 show_notifications = false
@@ -750,30 +767,30 @@ style = "bold yellow"
 disabled = false
 
 [os]
-format = "[$symbol]($style)"
-style = "bold white"
+format = "[](bg:white fg:black)[$symbol]($style)[](bg:240 fg:white)"
+style = "bg:white fg:black"
 disabled = false
 
 [os.symbols]
-Windows = " "
-Ubuntu = "󰕈 "
-SUSE = " "
-Raspbian = "󰐿 "
-Mint = "󰣭 "
-Macos = "󰀵"
-Manjaro = " "
-Linux = "󰌽 "
-Gentoo = "󰣨 "
-Fedora = "󰣛 "
-Alpine = " "
-Android = ""
-Arch = "󰣇 "
-Artix = "󰣇 "
-CentOS = " "
-Debian = "󰣚 "
-Redhat = "󱄛 "
-RedHatEnterprise = "󱄛 "
-Unknown = "❓ "
+Windows = "  "
+Ubuntu = " 󰕈 "
+SUSE = "  "
+Raspbian = " 󰐿 "
+Mint = " 󰣭 "
+Macos = " 󰀵"
+Manjaro = "  "
+Linux = " 󰌽 "
+Gentoo = " 󰣨 "
+Fedora = " 󰣛 "
+Alpine = "  "
+Android = " "
+Arch = " 󰣇 "
+Artix = " 󰣇 "
+CentOS = "  "
+Debian = " 󰣚 "
+Redhat = " 󱄛 "
+RedHatEnterprise = " 󱄛 "
+Unknown = " ❓ "
 
 [package]
 format = "is [$symbol$version]($style) "
@@ -1065,8 +1082,8 @@ detect_files = []
 detect_folders = [".terraform"]
 
 [time]
-format = "[$time]($style) "
-style = "bold yellow"
+format = "[$time]($style)"
+style = "bg:yellow fg:bold black"
 use_12hr = false
 disabled = false
 utc_time_offset = "local"
