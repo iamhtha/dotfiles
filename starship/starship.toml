@@ -8,7 +8,7 @@ $all\
 [](#ff8800)\
 $line_break\
 [╰─](#ff8800)\
-[▓ ](bg:#777777 fg:#ff8800)\
+[](bg:#ff8800 fg:bright-white)\
 $battery\
 $cmd_duration\
 $character"""
@@ -29,9 +29,9 @@ follow_symlinks = true
 [profiles]
 
 [aws]
-format = 'on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
+format = '[](bg:#777777 fg:#ff9900)on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)[](bg:#777777 fg:#ff8800)'
 symbol = "☁️  "
-style = "bold yellow"
+style = "bg:#ff9900 fg: bold black"
 disabled = false
 expiration_symbol = "X"
 force_display = false
@@ -55,11 +55,19 @@ discharging_symbol = "󰂃 "
 unknown_symbol = "󰁽 "
 empty_symbol = "󰂎 "
 disabled = false
-format = "[$symbol$percentage]($style)[](bg:yellow fg:#777777)"
+format = "[$symbol$percentage]($style)"
+
+[[battery.display]]
+threshold = 10
+style = "bg:red fg:bold bright-white"
+
+[[battery.display]]
+threshold = 50
+style = "bg:yellow fg:bold bright-white"
 
 [[battery.display]]
 threshold = 100
-style = "bg:#777777 fg:bright-white"
+style = "bg:green fg:bold bright-white"
 
 [buf]
 format = "with [$symbol($version )]($style)"
@@ -117,12 +125,12 @@ commands = [
 
 [character]
 format = "$symbol "
-success_symbol = "[ ▓](bg:yellow fg:green)[](green)"
-error_symbol = "[ ▓](bg:yellow fg:red)[](red)"
-vimcmd_symbol = "[ ▓](bg:yellow fg:green)[](green)"
-vimcmd_visual_symbol = "[ ▓](bg:yellow fg:yellow)[](yellow)"
-vimcmd_replace_symbol = "[ ▓](bg:yellow fg:purple)[](purple)"
-vimcmd_replace_one_symbol = "[ ▓](bg:yellow fg:purple)[](purple)"
+success_symbol = "[ ▓](bg:bright-white fg:green)[█](green)"
+error_symbol = "[ ▓](bg:bright-white fg:red)[█](red)"
+vimcmd_symbol = "[ ▓](bg:bright-white fg:green)[█](green)"
+vimcmd_visual_symbol = "[ ▓](bg:bright-white fg:yellow)[█](yellow)"
+vimcmd_replace_symbol = "[ ▓](bg:bright-white fg:purple)[█](purple)"
+vimcmd_replace_one_symbol = "[ ▓](bg:bright-white fg:purple)[█](purple)"
 disabled = false
 
 [cmake]
@@ -139,9 +147,9 @@ detect_files = [
 detect_folders = []
 
 [cmd_duration]
-min_time = 2000
-format = "[⌛$duration]($style)"
-style = "bg:yellow fg:bold black"
+min_time = 1
+format = "[⌛ $duration]($style)"
+style = "bg:bright-white fg:bold black"
 show_milliseconds = false
 disabled = false
 show_notifications = false
@@ -232,17 +240,15 @@ truncation_length = 3
 truncate_to_repo = true
 fish_style_pwd_dir_length = 0
 use_logical_path = true
-format = "[$path]($style)[$read_only]($read_only_style) "
+format = "[](bg:#777777 fg:bright-yellow)[ $path]($style)[$read_only]($read_only_style)[](bg:#777777 fg:bright-yellow)"
 repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
-style = "cyan bold"
+style = "bg:bright-yellow fg:bold black"
 disabled = false
 read_only = "🔒"
-read_only_style = "red"
-truncation_symbol = ""
+read_only_style = "bg:bright-yellow"
+truncation_symbol = ".../"
 home_symbol = "~"
 use_os_path_sep = true
-
-[directory.substitutions]
 
 [direnv]
 format = "[$symbol$loaded/$allowed]($style) "
@@ -767,7 +773,7 @@ style = "bold yellow"
 disabled = false
 
 [os]
-format = "[](bg:white fg:black)[$symbol]($style)[](bg:240 fg:white)"
+format = "[](bg:#777777 fg:white)[$symbol]($style)[](bg:#777777 fg:white)"
 style = "bg:white fg:black"
 disabled = false
 
