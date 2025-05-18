@@ -13,11 +13,9 @@ $battery\
 $cmd_duration\
 $character"""
 right_format = """
-[](black)\
-[▓ ](bg:yellow fg:black)\
+[🭮🭪](yellow)\
 $time\
-[ ▓](bg:yellow fg:black)\
-[](black)"""
+[🭨🭬](yellow)"""
 continuation_prompt = "[∙](bright-black) "
 scan_timeout = 30
 command_timeout = 500
@@ -125,12 +123,12 @@ commands = [
 
 [character]
 format = "$symbol "
-success_symbol = "[ ▓](bg:bright-white fg:green)[█](green)"
-error_symbol = "[ ▓](bg:bright-white fg:red)[█](red)"
-vimcmd_symbol = "[ ▓](bg:bright-white fg:green)[█](green)"
-vimcmd_visual_symbol = "[ ▓](bg:bright-white fg:yellow)[█](yellow)"
-vimcmd_replace_symbol = "[ ▓](bg:bright-white fg:purple)[█](purple)"
-vimcmd_replace_one_symbol = "[ ▓](bg:bright-white fg:purple)[█](purple)"
+success_symbol = "[▓](bg:bright-white fg:green)[█](green)"
+error_symbol = "[▓](bg:bright-white fg:red)[█](red)"
+vimcmd_symbol = "[▓](bg:bright-white fg:green)[█](green)"
+vimcmd_visual_symbol = "[▓](bg:bright-white fg:yellow)[█](yellow)"
+vimcmd_replace_symbol = "[▓](bg:bright-white fg:purple)[█](purple)"
+vimcmd_replace_one_symbol = "[▓](bg:bright-white fg:purple)[█](purple)"
 disabled = false
 
 [cmake]
@@ -1088,7 +1086,7 @@ detect_files = []
 detect_folders = [".terraform"]
 
 [time]
-format = "[$time]($style)"
+format = "[🭮](yellow)[$time]($style)[🭬](yellow)"
 style = "bg:yellow fg:bold black"
 use_12hr = false
 disabled = false
