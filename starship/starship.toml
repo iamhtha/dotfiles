@@ -1,21 +1,25 @@
 "$schema" = "https://starship.rs/config-schema.json"
 format = """
-[╭](#ff8800)\
-[](bg:#777777 fg:#ff8800)\
-$os\
+[╭](#777777)\
+[▙](bg:#AAAAAA fg:#777777)\
+[▚](bg:#AAAAAA fg:white)\
+[▘](bg:#AAAAAA fg:white)\
+$time\
+$directory\
+$git_branch\
+$git_commit\
+$git_metrics\
+$git_state\
+$git_status\
 $all\
-[](bg:#777777 fg:#ff8800)\
-[](#ff8800)\
+[](bg:white fg:#AAAAAA)\
+[](#AAAAAA)\
 $line_break\
-[╰─](#ff8800)\
-[](bg:#ff8800 fg:bright-white)\
+[╰─](#777777)\
+$os\
 $battery\
 $cmd_duration\
 $character"""
-right_format = """
-[🭮🭪](yellow)\
-$time\
-[🭨🭬](yellow)"""
 continuation_prompt = "[∙](bright-black) "
 scan_timeout = 30
 command_timeout = 500
@@ -53,19 +57,19 @@ discharging_symbol = "󰂃 "
 unknown_symbol = "󰁽 "
 empty_symbol = "󰂎 "
 disabled = false
-format = "[$symbol$percentage]($style)"
+format = "[](bg:#444444 fg:#777777)[ $symbol$percentage ]($style)[🭨](bg:#444444 fg:#777777)"
 
 [[battery.display]]
 threshold = 10
-style = "bg:red fg:bold bright-white"
+style = "bg:#444444 fg:bold red"
 
 [[battery.display]]
 threshold = 50
-style = "bg:yellow fg:bold bright-white"
+style = "bg:#444444 fg:bold yellow"
 
 [[battery.display]]
 threshold = 100
-style = "bg:green fg:bold bright-white"
+style = "bg:#444444 fg:bold green"
 
 [buf]
 format = "with [$symbol($version )]($style)"
@@ -123,12 +127,12 @@ commands = [
 
 [character]
 format = "$symbol "
-success_symbol = "[▓](bg:bright-white fg:green)[█](green)"
-error_symbol = "[▓](bg:bright-white fg:red)[█](red)"
-vimcmd_symbol = "[▓](bg:bright-white fg:green)[█](green)"
-vimcmd_visual_symbol = "[▓](bg:bright-white fg:yellow)[█](yellow)"
-vimcmd_replace_symbol = "[▓](bg:bright-white fg:purple)[█](purple)"
-vimcmd_replace_one_symbol = "[▓](bg:bright-white fg:purple)[█](purple)"
+success_symbol = "[🭬](bg:green fg:bold #777777)[✔](bg:green fg:bold white)[](green)"
+error_symbol = "[🭬](bg:red fg:bold #777777)[✘](bg:red fg:bold white)[](red)"
+vimcmd_symbol = "[🭬](bg:green fg:bold #777777)[](bg:green fg:bold white)[](green)"
+vimcmd_visual_symbol = "[🭬](bg:yellow fg:bold #777777)[](bg:yellow fg:bold white)[](yellow)"
+vimcmd_replace_symbol = "[🭬](bg:purpe fg:bold #777777)[](bg:purple fg:bold white)[](purple)"
+vimcmd_replace_one_symbol = "[🭬](bg:purpe fg:bold #777777)[](bg:purple fg:bold white)[](purple)"
 disabled = false
 
 [cmake]
@@ -146,8 +150,8 @@ detect_folders = []
 
 [cmd_duration]
 min_time = 1
-format = "[⌛ $duration]($style)"
-style = "bg:bright-white fg:bold black"
+format = "[🭬](bg:#555555 fg:#777777)[ $duration]($style)[🭨](bg:#555555 fg:#777777)"
+style = "bg:#555555 fg:bold white"
 show_milliseconds = false
 disabled = false
 show_notifications = false
@@ -238,12 +242,12 @@ truncation_length = 3
 truncate_to_repo = true
 fish_style_pwd_dir_length = 0
 use_logical_path = true
-format = "[](bg:#777777 fg:bright-yellow)[ $path]($style)[$read_only]($read_only_style)[](bg:#777777 fg:bright-yellow)"
+format = "[](bg:#F2C94C fg:white)[ $path]($style)[$read_only]($style)[](bg:#F2C94C fg:white)"
 repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
-style = "bg:bright-yellow fg:bold black"
+style = "bg:#F2C94C fg:bold black"
 disabled = false
 read_only = "🔒"
-read_only_style = "bg:bright-yellow"
+# read_only_style = "bg:bright-yellow"
 truncation_symbol = ".../"
 home_symbol = "~"
 use_os_path_sep = true
@@ -378,9 +382,9 @@ detect_env_vars = []
 [gcloud.project_aliases]
 
 [git_branch]
-format = "on [$symbol$branch(:$remote_branch)]($style) "
-symbol = " "
-style = "bold purple"
+format = "[](bg:#F1502F fg:white)[on $symbol$branch(:$remote_branch) ]($style)"
+symbol = " "
+style = "bg:#F1502F fg:#3E2C00"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
 only_attached = false
@@ -391,19 +395,21 @@ disabled = false
 [git_commit]
 commit_hash_length = 7
 format = '[\($hash$tag\)]($style) '
-style = "green bold"
+style = "bg:#F1502F fg:green"
 only_detached = true
 disabled = false
-tag_symbol = " 🏷  "
-tag_disabled = true
+tag_symbol = " 🏷"
+tag_disabled = false
 tag_max_candidates = 0
 
 [git_metrics]
-added_style = "bold green"
-deleted_style = "bold red"
+added_style = "bg:#F1502F fg:bright-green"
+deleted_style = "bg:#F1502F fg:#990000"
 only_nonzero_diffs = true
-format = "([+$added]($added_style) )([-$deleted]($deleted_style) )"
-disabled = true
+format = """
+([+$added]($added_style))\
+([-$deleted]($deleted_style))"""
+disabled = false
 ignore_submodules = false
 
 [git_state]
@@ -414,13 +420,13 @@ cherry_pick = "CHERRY-PICKING"
 bisect = "BISECTING"
 am = "AM"
 am_or_rebase = "AM/REBASE"
-style = "bold yellow"
+style = "bg:#F1502F fg:yellow"
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 disabled = false
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style) )'
-style = "red bold"
+format = '[\[$all_status$ahead_behind\]]($style)[](bg:#F1502F fg:white)'
+style = "bg:#F1502F fg:#3E2C00"
 stashed = '\$'
 ahead = "⇡"
 behind = "⇣"
@@ -447,10 +453,10 @@ detect_files = ["gleam.toml"]
 detect_folders = []
 
 [golang]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#00ADD8 fg:white)[$symbol($version)]($style)[](bg:#00ADD8 fg:white)"
 version_format = "v${raw}"
-symbol = "🐹 "
-style = "bold cyan"
+symbol = " "
+style = "bg:#00ADD8 fg:white"
 disabled = false
 not_capable_style = "bold red"
 detect_extensions = ["go"]
@@ -639,10 +645,10 @@ style = "yellow bold"
 disabled = true
 
 [lua]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#010180 fg:white)[$symbol($version)]($style)[](bg:#010180 fg:white)"
 version_format = "v${raw}"
-symbol = "🌙 "
-style = "bold blue"
+symbol = " "
+style = "bg:#010180 fg:white"
 lua_binary = "lua"
 disabled = false
 detect_extensions = ["lua"]
@@ -771,8 +777,9 @@ style = "bold yellow"
 disabled = false
 
 [os]
-format = "[](bg:#777777 fg:white)[$symbol]($style)[](bg:#777777 fg:white)"
-style = "bg:white fg:black"
+# format = "[](bg:#777777 fg:white)[$symbol]($style)[](bg:#777777 fg:white)"
+format = "[$symbol]($style)"
+style = "bg:#777777 fg:black"
 disabled = false
 
 [os.symbols]
@@ -873,10 +880,10 @@ python_binary = [
     "python3",
     "python2",
 ]
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = '[](bg:#4B8BBE fg:white)[${symbol}${pyenv_prefix}(${version})( \($virtualenv\))]($style)[](bg:#4B8BBE fg:white)'
 version_format = "v${raw}"
-style = "yellow bold"
-symbol = "🐍 "
+style = "bg:#4B8BBE fg:#FFD73B"
+symbol = " "
 disabled = false
 detect_extensions = ["py"]
 detect_files = [
@@ -1086,8 +1093,8 @@ detect_files = []
 detect_folders = [".terraform"]
 
 [time]
-format = "[🭮](yellow)[$time]($style)[🭬](yellow)"
-style = "bg:yellow fg:bold black"
+format = "[$time]($style)[](bg:#AAAAAA fg:white)"
+style = "bg:#AAAAAA fg:black"
 use_12hr = false
 disabled = false
 utc_time_offset = "local"
