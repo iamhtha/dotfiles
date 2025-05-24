@@ -107,6 +107,7 @@ return {
         "pyright",
         "ruff",
         "rust_analyzer",
+        "taplo",
         "typos_lsp",
       },
     },
@@ -185,6 +186,7 @@ return {
           }
         },
         rust_analyzer = {},
+        taplo = {},
         typos_lsp = {},
       },
     },
