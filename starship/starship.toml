@@ -233,7 +233,7 @@ detect_folders = [".dart_tool"]
 [deno]
 format = "[](bg:black fg:white)[$symbol( $version)]($style)[](bg:black fg:white)"
 version_format = "v${raw}"
-symbol = " "
+symbol = ""
 style = "bg:black fg:white"
 disabled = false
 detect_extensions = []
