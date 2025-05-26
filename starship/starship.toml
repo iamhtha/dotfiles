@@ -25,7 +25,7 @@ $cmd_duration\
 $character"""
 continuation_prompt = "[∙](bright-black) "
 scan_timeout = 30
-command_timeout = 500
+command_timeout = 10000
 add_newline = true
 follow_symlinks = true
 
@@ -413,8 +413,8 @@ tag_disabled = false
 tag_max_candidates = 0
 
 [git_metrics]
-added_style = "bg:#F1502F fg:bright-green"
-deleted_style = "bg:#F1502F fg:#990000"
+added_style = "bg:#F1502F fg:bold bright-green"
+deleted_style = "bg:#F1502F fg:bold #990000"
 only_nonzero_diffs = true
 format = """
 ([+$added]($added_style))\
@@ -435,7 +435,7 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 disabled = false
 
 [git_status]
-format = '[\[$all_status$ahead_behind\]]($style)[](bg:#F1502F fg:white)'
+format = '[ \[$all_status$ahead_behind\]]($style)[](bg:#F1502F fg:white)'
 style = "bg:#F1502F fg:#3E2C00"
 stashed = '\$'
 ahead = "⇡"
@@ -681,7 +681,7 @@ style = "blue bold"
 disabled = false
 
 [mojo]
-symbol = ""
+symbol = "🔥"
 
 [nats]
 format = "[$symbol($name )]($style)"
@@ -818,9 +818,9 @@ RedHatEnterprise = " 󱄛 "
 Unknown = " ❓ "
 
 [package]
-format = "is [$symbol$version]($style) "
-symbol = "📦 "
-style = "208 bold"
+format = "[](bg:#AA00AA fg:white)[$symbol $version]($style)[](bg:#AA00AA fg:white)"
+symbol = ""
+style = "bg:#AA00AA fg:white"
 display_private = false
 disabled = false
 version_format = "v${raw}"
