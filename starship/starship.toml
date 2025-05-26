@@ -102,9 +102,9 @@ detect_files = [
 detect_folders = []
 
 [c]
-format = "[$symbol($version(-$name) )]($style)"
+format = "[](bg:#659AD2 fg:white)[$symbol( $version(-$name))]($style)[](bg:#659AD2 fg:white)"
 version_format = "v${raw}"
-style = "149 bold"
+style = "bg:#659AD2 fg:white"
 symbol = ""
 disabled = false
 detect_extensions = [
@@ -128,8 +128,12 @@ commands = [
 ],
 ]
 
+
 [cpp]
-symbol = " "
+format = "[](bg:#004482 fg:white)[$symbol( $version(-$name))]($style)[](bg:#004482 fg:white)"
+symbol = ""
+style = "bg:#004482 fg:white"
+disabled = false
 
 [character]
 format = "$symbol "
@@ -710,10 +714,11 @@ disabled = false
 heuristic = false
 
 [nodejs]
-format = "[$symbol($version )]($style)"
+format = '[](bg:#3C873A fg:white)[${symbol}( ${version})]($style)[](bg:#3C873A fg:white)'
+# format = "[$symbol($version )]($style)"
 version_format = "v${raw}"
 symbol = ""
-style = "bold green"
+style = "bg:#3C873A fg:bold #303030"
 disabled = false
 not_capable_style = "bold red"
 detect_extensions = [
@@ -889,7 +894,7 @@ python_binary = [
     "python3",
     "python2",
 ]
-format = '[](bg:#4B8BBE fg:white)[${symbol}${pyenv_prefix}(${version})( \($virtualenv\))]($style)[](bg:#4B8BBE fg:white)'
+format = '[](bg:#4B8BBE fg:white)[${symbol}( ${pyenv_prefix})( ${version})( \($virtualenv\))]($style)[](bg:#4B8BBE fg:white)'
 version_format = "v${raw}"
 style = "bg:#4B8BBE fg:#FFD73B"
 symbol = ""
@@ -979,10 +984,10 @@ detect_variables = [
 ]
 
 [rust]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#D34516 fg:white)[$symbol( $version)]($style)[](bg:#D34516 fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "bold red"
+style = "bg:#D34516 fg:black"
 disabled = false
 detect_extensions = ["rs"]
 detect_files = ["Cargo.toml"]
