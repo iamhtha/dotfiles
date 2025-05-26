@@ -392,7 +392,7 @@ detect_env_vars = []
 [gcloud.project_aliases]
 
 [git_branch]
-format = "[](bg:#F1502F fg:white)[on $symbol$branch(:$remote_branch) ]($style)"
+format = "[](bg:#F1502F fg:white)[on $symbol$branch(:$remote_branch)]($style)"
 symbol = " "
 style = "bg:#F1502F fg:#3E2C00"
 truncation_length = 9223372036854775807
@@ -404,7 +404,7 @@ disabled = false
 
 [git_commit]
 commit_hash_length = 7
-format = '[\($hash$tag\)]($style) '
+format = '[ \($hash$tag\)]($style) '
 style = "bg:#F1502F fg:green"
 only_detached = true
 disabled = false
@@ -416,9 +416,7 @@ tag_max_candidates = 0
 added_style = "bg:#F1502F fg:bold bright-green"
 deleted_style = "bg:#F1502F fg:bold #990000"
 only_nonzero_diffs = true
-format = """
-([+$added]($added_style))\
-([-$deleted]($deleted_style))"""
+format = "([ ](bg:#F1502F)([+$added]($added_style))([-$deleted]($deleted_style)))"
 disabled = false
 ignore_submodules = false
 
@@ -431,11 +429,11 @@ bisect = "BISECTING"
 am = "AM"
 am_or_rebase = "AM/REBASE"
 style = "bg:#F1502F fg:yellow"
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
+format = '\([ $state( $progress_current/$progress_total)]($style)\) '
 disabled = false
 
 [git_status]
-format = '[ \[$all_status$ahead_behind\]]($style)[](bg:#F1502F fg:white)'
+format = '([ \[$all_status$ahead_behind\]]($style))[](bg:#F1502F fg:white)'
 style = "bg:#F1502F fg:#3E2C00"
 stashed = '\$'
 ahead = "⇡"
