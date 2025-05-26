@@ -36,7 +36,7 @@ follow_symlinks = true
 [aws]
 format = '[](bg:#FF9900 fg:white)[on $symbol( $profile)( \($region\))( \[$duration\])]($style)[](bg:#FF9900 fg:white)'
 symbol = ""
-style = "bg:#FF9900 fg:#000000"
+style = "bg:#FF9900 fg:bold black"
 disabled = false
 expiration_symbol = "X"
 force_display = false
@@ -46,9 +46,9 @@ force_display = false
 [aws.profile_aliases]
 
 [azure]
-format = "on [$symbol( $subscription)]($style) "
+format = "[](bg:#008AD7 fg:white)[on $symbol( $subscription)]($style)[](bg:#008AD7 fg:white)"
 symbol = ""
-style = "blue bold"
+style = "bg:#008AD7 fg:bold white"
 disabled = true
 
 [azure.subscription_aliases]
@@ -64,22 +64,22 @@ format = "[ $symbol$percentage ]($style)"
 
 [[battery.display]]
 threshold = 10
-style = "bg:#880000 fg:white"
+style = "bg:#880000 fg:bold white"
 
 [[battery.display]]
 threshold = 50
-style = "bg:#888800 fg:white"
+style = "bg:#888800 fg: boldwhite"
 
 [[battery.display]]
 threshold = 100
-style = "bg:#008800 fg:white"
+style = "bg:#008800 fg:bold white"
 
 [buf]
-format = "with [$symbol($version )]($style)"
+format = "[](bg:#0E5DF5 fg:white)[with $symbol( $version)]($style)[](bg:#0E5DF5 fg:white)"
 version_format = "v${raw}"
-symbol = "🐃 "
-style = "bold blue"
-disabled = true
+symbol = ""
+style = "bg:#0E5DF5 fg:#5FDCFF"
+disabled = false
 detect_extensions = []
 detect_files = [
     "buf.yaml",
@@ -89,10 +89,10 @@ detect_files = [
 detect_folders = []
 
 [bun]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#FBF0DF fg:white)[$symbol( $version)]($style)[](bg:#FBF0DF fg:white)"
 version_format = "v${raw}"
-symbol = " "
-style = "bold red"
+symbol = ""
+style = "bg:#FBF0DF fg:#FEBBD0"
 disabled = false
 detect_extensions = []
 detect_files = [
@@ -115,17 +115,17 @@ detect_files = []
 detect_folders = []
 commands = [
     [
-    "cc",
-    "--version",
-],
+		"cc",
+		"--version",
+	],
     [
-    "gcc",
-    "--version",
-],
+		"gcc",
+		"--version",
+	],
     [
-    "clang",
-    "--version",
-],
+		"clang",
+		"--version",
+	],
 ]
 
 
@@ -146,10 +146,10 @@ vimcmd_replace_one_symbol = "[🭬](bg:purpe fg:bold #777777)[](bg:purple fg:
 disabled = false
 
 [cmake]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#0068C7 fg:white)$symbol([ $version]($style))[](bg:#0068C7 fg:white)"
 version_format = "v${raw}"
-symbol = ""
-style = "bold blue"
+symbol = "[](bg:#0068C7 fg:#3DAE2B)"
+style = "bg:#0068C7 fg:#F32735"
 disabled = false
 detect_extensions = []
 detect_files = [
@@ -168,11 +168,11 @@ show_notifications = false
 min_time_to_notify = 45000
 
 [cobol]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#333333 fg:white)[$symbol $version]($style)[](bg:#333333 fg:white)"
 version_format = "v${raw}"
-symbol = "⚙️ "
-style = "bold blue"
-disabled = true
+symbol = "⚙"
+style = "bg:#333333 fg:green"
+disabled = false
 detect_extensions = [
     "cbl",
     "cob",
@@ -184,43 +184,43 @@ detect_folders = []
 
 [conda]
 truncation_length = 1
-format = "[$symbol$environment]($style) "
+format = "[](bg:#43B02A fg:white)[$symbol $environment]($style)[](bg:#43B02A fg:white)"
 symbol = ""
-style = "green bold"
+style = "bg:#43B02A fg:white"
 ignore_base = true
 disabled = false
 
 [container]
-format = '[$symbol \[$name\]]($style) '
-symbol = "⬢"
-style = "red bold dimmed"
+format = '[](bg:cyan fg:white)[$symbol \[$name\]]($style)[](bg:cyan fg:white)'
+symbol = ""
+style = "bg:cyan fg:black"
 disabled = false
 
 [crystal]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#020202 fg:white)[$symbol( $version)]($style)[](bg:#020202 fg:white)"
 version_format = "v${raw}"
-symbol = ""
-style = "bold red"
+symbol = ""
+style = "bg:#020202 fg:white"
 disabled = false
 detect_extensions = ["cr"]
 detect_files = ["shard.yml"]
 detect_folders = []
 
 [daml]
-symbol = "Λ "
-format = "[$symbol($version )]($style)"
+symbol = "Λ"
+format = "[](bg:#233040 fg:white)[$symbol( $version)]($style)[](bg:#233040 fg:white)"
 version_format = "v${raw}"
-style = "bold cyan"
-disabled = true
+style = "bg:#233040 fg:#4E80F9"
+disabled = false
 detect_extensions = []
 detect_files = ["daml.yaml"]
 detect_folders = []
 
 [dart]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#2CB7F6 fg:white)[$symbol( $version)]($style)[](bg:#2CB7F6 fg:white)"
 version_format = "v${raw}"
-symbol = " "
-style = "bold blue"
+symbol = ""
+style = "bg:#2CB7F6 fg:#04599C"
 disabled = false
 detect_extensions = ["dart"]
 detect_files = [
@@ -231,10 +231,10 @@ detect_files = [
 detect_folders = [".dart_tool"]
 
 [deno]
-format = "[$symbol($version )]($style)"
+format = "[](bg:black fg:white)[$symbol( $version)]($style)[](bg:black fg:white)"
 version_format = "v${raw}"
 symbol = " "
-style = "green bold"
+style = "bg:black fg:white"
 disabled = false
 detect_extensions = []
 detect_files = [
@@ -263,10 +263,10 @@ home_symbol = "~"
 use_os_path_sep = true
 
 [direnv]
-format = "[$symbol$loaded/$allowed]($style) "
-symbol = "direnv "
-style = "bold orange"
-disabled = true
+format = "[](bg:#0AAFC7 fg:white)[$symbol $loaded/$allowed]($style)[](bg:#0AAFC7 fg:white)"
+symbol = "󰉗"
+style = "bg:#0AAFC7 fg:#67C337"
+disabled = false
 detect_extensions = []
 detect_files = [".envrc"]
 detect_folders = []
@@ -277,9 +277,9 @@ loaded_msg = "loaded"
 unloaded_msg = "not loaded"
 
 [docker_context]
-symbol = ""
-style = "blue bold"
-format = "[$symbol$context]($style) "
+symbol = ""
+style = "bg:#1D63ED fg:#67C337"
+format = "[](bg:#1D63ED fg:white)[$symbol $context]($style)[](bg:#1D63ED fg:white)"
 only_with_files = true
 disabled = false
 detect_extensions = []
@@ -291,10 +291,10 @@ detect_files = [
 detect_folders = []
 
 [dotnet]
-format = "[$symbol($version )(🎯 $tfm )]($style)"
+format = "[](bg:#512BD4 fg:white)[$symbol( $version)( 🎯 $tfm)]($style)[](bg:#512BD4 fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "blue bold"
+style = "bg:#512BD4 fg:white"
 heuristic = true
 disabled = false
 detect_extensions = [
