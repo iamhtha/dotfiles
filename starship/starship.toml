@@ -368,7 +368,7 @@ disabled = true
 [fossil_branch]
 format = "[](bg:#548294 fg:white)[on $symbol$branch]($style) "
 symbol = ""
-style = "bold purple"
+style = "bg:#548294 fg:bold white"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
 disabled = false
@@ -381,9 +381,9 @@ only_nonzero_diffs = true
 disabled = false
 
 [gcloud]
-format = 'on [$symbol$account(@$domain)(\($region\))]($style) '
-symbol = ""
-style = "bold blue"
+format = '[](bg:#4285F4 fg:white)[ on $symbol$account(@$domain)(\($region\))]($style)[](bg:#4285F4 fg:white)'
+symbol = ""
+style = "bg:#4285F4 fg:bold #EA4335"
 disabled = false
 detect_env_vars = []
 
@@ -451,19 +451,19 @@ ignore_submodules = false
 disabled = false
 
 [gleam]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#FFAFF3 fg:white)[$symbol($version )]($style)[](bg:#FFAFF3 fg:white)"
 version_format = "v${raw}"
-symbol = "󰦥 "
-style = "bold #FFAFF3"
+symbol = "󰦥"
+style = "bg:#FFAFF3 fg:bold black"
 disabled = false
 detect_extensions = ["gleam"]
 detect_files = ["gleam.toml"]
 detect_folders = []
 
 [golang]
-format = "[](bg:#00ADD8 fg:white)[$symbol($version)]($style)[](bg:#00ADD8 fg:white)"
+format = "[](bg:#00ADD8 fg:white)[ $symbol($version)]($style)[](bg:#00ADD8 fg:white)"
 version_format = "v${raw}"
-symbol = " "
+symbol = ""
 style = "bg:#00ADD8 fg:white"
 disabled = false
 not_capable_style = "bold red"
@@ -480,10 +480,10 @@ detect_files = [
 detect_folders = ["Godeps"]
 
 [gradle]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#02303A fg:white)[ $symbol($version )]($style)[](bg:#02303A fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "bold bright-cyan"
+style = "bg:#02303A fg:white"
 disabled = false
 recursive = false
 detect_extensions = [
@@ -494,9 +494,9 @@ detect_files = []
 detect_folders = ["gradle"]
 
 [guix_shell]
-format = "[$symbol]($style) "
+format = "[](bg:#FFCC00 fg:white)[$symbol]($style)[](bg:#FFCC00 fg:white)"
 symbol = ""
-style = "yellow bold"
+style = "bg:#FFCC00 fg:black"
 disabled = false
 
 [haskell]
