@@ -101,4 +101,5 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 -- KEYMAPS
 require("keymaps")
+require("lsp")
 
