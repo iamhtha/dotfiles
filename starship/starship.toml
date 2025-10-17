@@ -451,7 +451,7 @@ ignore_submodules = false
 disabled = false
 
 [gleam]
-format = "[](bg:#FFAFF3 fg:white)[$symbol($version )]($style)[](bg:#FFAFF3 fg:white)"
+format = "[](bg:#FFAFF3 fg:white)[$symbol( $version)]($style)[](bg:#FFAFF3 fg:white)"
 version_format = "v${raw}"
 symbol = "󰦥"
 style = "bg:#FFAFF3 fg:bold black"
@@ -461,7 +461,7 @@ detect_files = ["gleam.toml"]
 detect_folders = []
 
 [golang]
-format = "[](bg:#00ADD8 fg:white)[ $symbol($version)]($style)[](bg:#00ADD8 fg:white)"
+format = "[](bg:#00ADD8 fg:white)[$symbol( $version)]($style)[](bg:#00ADD8 fg:white)"
 version_format = "v${raw}"
 symbol = ""
 style = "bg:#00ADD8 fg:white"
@@ -480,7 +480,7 @@ detect_files = [
 detect_folders = ["Godeps"]
 
 [gradle]
-format = "[](bg:#02303A fg:white)[ $symbol($version )]($style)[](bg:#02303A fg:white)"
+format = "[](bg:#02303A fg:white)[$symbol( $version)]($style)[](bg:#02303A fg:white)"
 version_format = "v${raw}"
 symbol = ""
 style = "bg:#02303A fg:white"
@@ -500,10 +500,10 @@ style = "bg:#FFCC00 fg:black"
 disabled = false
 
 [haskell]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#644A8F fg:white)[$symbol( $version )]($style)[](bg:#644A8F fg:white)"
 version_format = "v${raw}"
-symbol = ""
-style = "bold purple"
+symbol = ""
+style = "bg:#644A8F fg:white"
 disabled = false
 detect_extensions = [
     "hs",
@@ -517,10 +517,10 @@ detect_files = [
 detect_folders = []
 
 [haxe]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#F6880A fg:white)[$symbol( $version)]($style)[](bg:#F6880A fg:white)"
 version_format = "v${raw}"
-symbol = "⌘ "
-style = "bold fg:202"
+symbol = ""
+style = "bg:#F6880A fg:black"
 disabled = false
 detect_extensions = [
     "hx",
@@ -537,10 +537,10 @@ detect_folders = [
 ]
 
 [helm]
-format = "[$symbol($version )]($style)"
+format = "[](bg:#0F1689 fg:white)[$symbol( $version)]($style)[](bg:#0F1689 fg:white)"
 version_format = "v${raw}"
-symbol = ""
-style = "bold white"
+symbol = ""
+style = "bg:#0F1689 fg:white"
 disabled = false
 detect_extensions = []
 detect_files = [
@@ -550,20 +550,20 @@ detect_files = [
 detect_folders = []
 
 [hg_branch]
-symbol = " "
-style = "bold purple"
-format = "on [$symbol$branch(:$topic)]($style) "
+format = "[](bg:#F#9A9A9A fg:white)[on $symbol$branch(:$topic)]($style)[](bg:#F#9A9A9A fg:white)"
+symbol = " "
+style = "bg:#F#9A9A9A fg:white"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
 disabled = true
 
 [hostname]
 ssh_only = true
-ssh_symbol = "🌐 "
+ssh_symbol = ">_󰣀"
 trim_at = "."
 detect_env_vars = []
-format = "[$ssh_symbol$hostname]($style) in "
-style = "green dimmed bold"
+format = "[](bg:black fg:white)[$ssh_symbol$hostname in ]($style)[](bg:black fg:white)"
+style = "bg:black fg:white"
 disabled = false
 
 [java]
