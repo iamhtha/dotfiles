@@ -171,6 +171,13 @@ wk.add(
     ({ "grs", vim.lsp.buf.document_symbol, mode = { "n" }, desc = "List all symbols in the current buffer in the location list", noremap = true, silent = true }),
     -- mini.jump2d
     ({ "<cr>", mode = { "n", "v" }, desc = "Jump within vsible lines", noremap = true, silent = true }),
+    -- Neogen - annotation generator
+    ({ "<leader>a", group = "Neogen (annotation generator)" }),
+    ({ "<leader>aa", function () require("neogen").generate() end, mode = "n", desc = "Generate annotation (automatically)", noremap = true, silent = true }),
+    ({ "<leader>ac", function () require("neogen").generate({ type = "class" }) end, mode = "n", desc = "Generate annotation (class)", noremap = true, silent = true }),
+    ({ "<leader>af", function () require("neogen").generate({ type = "func" }) end, mode = "n", desc = "Generate annotation (function)", noremap = true, silent = true }),
+    ({ "<leader>aF", function () require("neogen").generate({ type = "file" }) end, mode = "n", desc = "Generate annotation (File)", noremap = true, silent = true }),
+    ({ "<leader>at", function () require("neogen").generate({ type = "type" }) end, mode = "n", desc = "Generate annotation (type)", noremap = true, silent = true }),
     -- Treesitter
     ({ "gn", group = "Treesitter keymaps" }),
     ({ "gnd", mode = "n", desc = "Go to definition" }),
