@@ -22,7 +22,15 @@ return {
     },
     config = function()
       require("nvim-treesitter.configs").setup {
-        ensure_installed = { "c", "cpp", "lua", "python", "rust" },
+        ensure_installed = {
+          "c",
+          "cpp",
+          "lua",
+          "python",
+          "rust",
+          "javascript",
+          "typescript",
+        },
         refactor = {
           highlight_definition = { enable = true },
           highlight_current_scope = { enable = true },
@@ -55,6 +63,53 @@ return {
       }
     end
   },
+  -- {
+  --   "yetone/avante.nvim",
+  --   build = vim.fn.has("win32") ~= 0
+  --     and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+  --     or "make",
+  --   event = "VeryLazy",
+  --   version = false,
+  --   opts = {
+  --     provider = "claude",
+  --     providers = {
+  --       claude = {
+  --         endpoint = "https://api.anthropic.com",
+  --         model = "claude-sonnet-4-20250514",
+  --         timeout = 30000,
+  --         extra_request_body = {
+  --           temperature = 0.75,
+  --           max_tokens = 20480,
+  --         }
+  --       }
+  --     },
+  --     auto_suggestions = true,
+  --   },
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     {
+  --       "HakonHarnes/img-clip.nvim",
+  --       event = "VeryLazy",
+  --       opts = {
+  --         default = {
+  --           embed_image_as_base64 = false,
+  --           prompt_for_file_name = false,
+  --           drag_and_drop = {
+  --             insert_mode = true,
+  --           },
+  --           use_absolute_path = true,
+  --         },
+  --       },
+  --     },
+  --     {
+  --       "MeanderingProgrammer/render-markdown.nvim",
+  --       opts = {
+  --         file_types = { "markdown", "Avante" },
+  --       },
+  --       ft = { "markdown", "Avante" },
+  --     }
+  -- },
   {
     "saghen/blink.cmp",
     version = "*",
@@ -75,7 +130,6 @@ return {
       appearance = { nerd_font_variant = "mono" },
       snippets = { preset = "luasnip" },
       signature = { enabled = true },
-
       completion = {
         documentation = {
           auto_show = true,
@@ -226,6 +280,9 @@ return {
           ["c.doxygen"] = require("neogen.configurations.c"),
           ["cpp.doxygen"] = require("neogen.configurations.cpp"),
           ["google_docstring"] = require("neogen.configurations.python"),
+          ["rustdoc"] = require("neogen.configurations.rust"),
+          ["jsdoc"] = require("neogen.configurations.javascript"),
+          ["tsdoc"] = require("neogen.configurations.typescript"),
         }
       }
     end
