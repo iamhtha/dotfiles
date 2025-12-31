@@ -1,9 +1,8 @@
 # dotfiles
 ## TODO
+- [ ] Arch install
 - [ ] Nvim config
-- [ ] foot
-- [ ] tmux
+- [ ] ghostty
 - [ ] startship.rs
-- [ ] NixOS
 - [ ] Hyprland
 - [ ] AGS/Astal
