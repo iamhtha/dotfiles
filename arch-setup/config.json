@@ -1,0 +1,241 @@
+{
+    "app_config": {
+        "audio_config": {
+            "audio": "pipewire"
+        },
+        "bluetooth_config": {
+            "enabled": true
+        },
+        "power_management_config": {
+            "power_management": "tuned"
+        },
+        "print_service_config": {
+            "enabled": true
+        }
+    },
+    "archinstall-language": "English",
+    "auth_config": {},
+    "bootloader_config": {
+        "bootloader": "Refind",
+        "removable": false,
+        "uki": true
+    },
+    "custom_commands": [],
+    "disk_config": {
+        "btrfs_options": {
+            "snapshot_config": null
+        },
+        "config_type": "manual_partitioning",
+        "device_modifications": [
+            {
+                "device": "/dev/nvme0n1",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "boot",
+                            "esp"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "9efcd640-016a-439b-9e12-3427e04ee794",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 1
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "swap"
+                        ],
+                        "fs_type": "linux-swap",
+                        "mount_options": [],
+                        "mountpoint": null,
+                        "obj_id": "d97b86bc-a47f-4821-bcd2-eea02d32ecff",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "KiB",
+                            "value": 40072655
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1074790400
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "ext4",
+                        "mount_options": [],
+                        "mountpoint": "/",
+                        "obj_id": "bec87ad8-41ee-43b7-8e3b-689bea6fbc0b",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1762459745587
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 42109189120
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ]
+    },
+    "hostname": "zephyrus",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "cz-lat2-prog",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US.UTF-8"
+    },
+    "mirror_config": {
+        "custom_repositories": [],
+        "custom_servers": [],
+        "mirror_regions": {
+            "Czechia": [
+                "http://mirror.vpsfree.cz/archlinux/$repo/os/$arch",
+                "http://mirror.dkm.cz/archlinux/$repo/os/$arch",
+                "https://mirror.dkm.cz/archlinux/$repo/os/$arch",
+                "http://gluttony.sin.cvut.cz/arch/$repo/os/$arch",
+                "https://gluttony.sin.cvut.cz/arch/$repo/os/$arch",
+                "https://archlinux.nic.cz/archlinux/$repo/os/$arch",
+                "http://ftp.sh.cvut.cz/arch/$repo/os/$arch",
+                "https://ftp.sh.cvut.cz/arch/$repo/os/$arch",
+                "http://ftp.fi.muni.cz/pub/linux/arch/$repo/os/$arch",
+                "http://ftp.linux.cz/pub/linux/arch/$repo/os/$arch",
+                "http://mirror.it4i.cz/arch/$repo/os/$arch",
+                "https://mirror.it4i.cz/arch/$repo/os/$arch"
+            ]
+        },
+        "optional_repositories": [
+            "multilib"
+        ]
+    },
+    "network_config": {
+        "type": "nm_iwd"
+    },
+    "ntp": true,
+    "packages": [
+        "amd-ucode",
+        "base-devel",
+        "bat",
+        "blender",
+        "curl",
+        "diff-so-fancy",
+        "fcitx5",
+        "fcitx5-bamboo",
+        "feh",
+        "gamescope",
+        "ghostty",
+        "gimp",
+        "git",
+        "hyprland",
+        "hyprlock",
+        "hyprpolkitagent",
+        "hyprshot",
+        "imagemagick",
+        "inkscape",
+        "lib32-mesa",
+        "lib32-vulkan-radeon",
+        "libreoffice-extension-texmaths",
+        "libreoffice-fresh",
+        "lutris",
+        "mesa",
+        "mpv",
+        "mupdf-tools",
+        "neovim",
+        "nerd-fonts",
+        "network-manager-applet",
+        "networkmanager",
+        "nextcloud-client",
+        "nm-connection-editor",
+        "npm",
+        "obs-studio",
+        "okular",
+        "pipewire-alsa",
+        "pipewire-jack",
+        "pipewire-pulse",
+        "python",
+        "reaper",
+        "rofi",
+        "rustup",
+        "starship",
+        "steam",
+        "texlive",
+        "texlive-lang",
+        "torbrowser-launcher",
+        "tree",
+        "tree-sitter",
+        "uv",
+        "vifm",
+        "vlc-plugins-all",
+        "vulkan-radeon",
+        "wget",
+        "wireguard-tools",
+        "xdg-desktop-portal-hyprland",
+        "zathura-pdf-mupdf",
+        "zoxide",
+        "zsh",
+        "zsh-autocomplete"
+    ],
+    "parallel_downloads": 0,
+    "profile_config": {
+        "gfx_driver": null,
+        "greeter": null,
+        "profile": {
+            "custom_settings": {},
+            "details": [],
+            "main": "Minimal"
+        }
+    },
+    "script": null,
+    "services": [],
+    "swap": {
+        "algorithm": "zstd",
+        "enabled": true
+    },
+    "timezone": "Europe/Prague",
+    "version": "3.0.15"
+}

@@ -1,0 +1,8 @@
+anki-bin
+aylurs-gtk-shell-git
+betterbird-bin
+joplin-desktop
+librewolf-bin
+pwvucontrol
+vscodium
+xsane
