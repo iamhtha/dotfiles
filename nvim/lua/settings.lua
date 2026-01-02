@@ -77,9 +77,17 @@ vim.api.nvim_create_autocmd("FileType", {
 )
 
 -- PLUGINS
+local plugins = function()
+  if vim.g.vscode then
+    return "plugins.vscode"
+  else
+    return "plugins"
+  end
+end
+
 require("lazy").setup {
   spec = {
-    { import = "plugins" },
+    { import = plugins() },
   },
   install = { colorscheme = { "gruvbox" } },
   checker = { enabled = true },
@@ -100,6 +108,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 -- KEYMAPS
-require("keymaps")
-require("lsp")
+if not vim.g.vscode then
+  require("keymaps")
+  require("lsp")
+end
 
