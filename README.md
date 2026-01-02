@@ -1,6 +1,6 @@
 # dotfiles
 ## TODO
-- [ ] Arch install
+- [ ] Arch setup
 - [ ] Nvim config
 - [ ] ghostty
 - [ ] startship.rs
