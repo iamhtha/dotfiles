@@ -1,0 +1,18 @@
+{
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "vscode-neovim.compositeKeys": {
+        "jk": {
+            "command": "vscode-neovim.escape"
+        }
+    },
+    "chat.disableAIFeatures": false,
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "files.autoSave": "onFocusChange",
+    "telemetry.feedback.enabled": false,
+    "editor.allowVariableFonts": false,
+    "editor.fontFamily": "'JetBrainsMono Nerd Font', 'DejaVu Sans Mono', 'Courier New', monospace",
+    "editor.fontLigatures": true,
+	"explorer.sortOrder": "type"
+}
