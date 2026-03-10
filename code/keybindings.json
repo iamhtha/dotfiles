@@ -1,0 +1,15 @@
+[
+  {
+    "key": "alt+t",
+    "command": "workbench.action.toggleZenMode"
+  },
+  {
+    "key": "shift+f9",
+    "command": "editor.debug.action.removeAllBreakpoints"
+  },
+  {
+    "key": "ctrl+shift+f9",
+    "command": "editor.debug.action.addConditionalBreakpoint",
+    "when": "editorTextFocus"
+  }
+]
