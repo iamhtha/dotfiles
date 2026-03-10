@@ -71,7 +71,22 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
     group = "indentSettings",
-    pattern = {"c", "cpp", "lua", "bash", "zsh"},
+    pattern = {"c", "cpp", "lua", "bash", "sh", "zsh"},
+    command = "set expandtab shiftwidth=2 tabstop=2 smarttab",
+  }
+)
+
+vim.api.nvim_create_autocmd("FileType", {
+    group = "indentSettings",
+    -- Go uses real tabs (gofmt convention)
+    pattern = {"go"},
+    command = "set noexpandtab shiftwidth=4 tabstop=4 smarttab",
+  }
+)
+
+vim.api.nvim_create_autocmd("FileType", {
+    group = "indentSettings",
+    pattern = {"javascript", "javascriptreact", "typescript", "typescriptreact", "html", "css", "markdown"},
     command = "set expandtab shiftwidth=2 tabstop=2 smarttab",
   }
 )
@@ -101,7 +116,7 @@ end
 vim.api.nvim_create_autocmd("VimEnter", {
     group = augroup("autoupdate"),
     callback = function()
-        if require("lazy.status").has_updates then
+        if require("lazy.status").has_updates() then
             require("lazy").update({ show = false, })
         end
     end,

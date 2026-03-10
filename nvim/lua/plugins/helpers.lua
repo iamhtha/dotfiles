@@ -16,6 +16,10 @@ return {
   },
   {
     "AckslD/nvim-neoclip.lua",
+    event = "VeryLazy",
+    config = function()
+      require("neoclip").setup()
+    end,
   },
   {
     "ibhagwan/fzf-lua",
@@ -35,6 +39,8 @@ return {
   },
   {
     "bassamsdata/namu.nvim",
+    event = "VeryLazy",
+    opts = {},
   },
   {
     "echasnovski/mini.jump",
@@ -48,5 +54,6 @@ return {
   },
   {
     "MagicDuck/grug-far.nvim",
+    opts = {},
   }
 }

@@ -1,205 +1,1314 @@
 local wk = require("which-key")
-wk.add(
-  {
-    ({ "<leader>", group = "Plugins" }),
-    ({ "<leader>?", require("which-key").show, desc = "Buffer keymaps", noremap = true, silent = true }),
-    -- Default NVim mappings (https://neovim.io/doc/user/vim_diff.html#default-mappings)
-    ({ "Y", mode = { "n" }, desc = "Yank till the end of the line (equivalent of y$)" }),
-    ({ "<C-u>", mode = { "i" }, desc = "Delete all entered characters before the cursor in the current line" }),
-    ({ "<C-w>", mode = { "i" }, desc = "Delete the word before the cursor" }),
-    ({ "<C-l>", mode = { "n", "i" }, desc = "Clear and redraw the screen" }),
-    ({ "&", mode = { "n" }, desc = "Repeat last substitute (synonym for :s)" }),
-    ({ "g&", mode = { "n" }, desc = "Repeat last substitute globally (synonym for :%s)" }),
-    ({ "g&", mode = { "n" }, desc = "Repeat last substitute globally (synonym for :%s)" }),
-    ({ "gr", mode = { "n" }, group = "LSP keymaps" }),
-    ({ "grn", mode = { "n" }, desc = "Rename all references to the symbol under the cursor" }),
-    ({ "grr", mode = { "n" }, desc = "List all the references to the symbol under the cursor in th quickfix window" }),
-    ({ "gra", mode = { "n" }, desc = "Select a code action available at the current cursor position" }),
-    ({ "gri", mode = { "n" }, desc = "List all the implementations for the symbol under the cursor in the quickfix window" }),
-    ({ "gO", mode = { "n" }, desc = "List all symbols in the current buffer in the location-list" }),
-    ({ "<C-s>", mode = { "i", "s" }, desc = "Display signature information about the symbol under the cursor in a floating window" }),
-    ({ "<C-w>d", mode = { "n" }, desc = "Show diagnostic under the cursor" }),
-    ({ "<C-w><C-d>", mode = { "n" }, desc = "Show diagnostic under the cursor" }),
-    ({ "K", mode = { "n" }, desc = "Display hover information about the symbol under the cursor in a floating window" }),
-    ({ "[", mode = { "n" }, group = "Previous/first ..." }),
-    ({ "]", mode = { "n" }, group = "Next/last ..." }),
-    ({ "[d", mode = { "n" }, desc = "Jump to the previous diagnostic in the current buffer (LSP diagnostics)" }),
-    ({ "]d", mode = { "n" }, desc = "Jump to the next diagnostic in the current buffer (LSP diagnostics)" }),
-    ({ "[D", mode = { "n" }, desc = "Jump to the first diagnostic in the current buffer (LSP diagnostics)" }),
-    ({ "]D", mode = { "n" }, desc = "Jump to the last diagnostic in the current buffer (LSP diagnostics)" }),
-    ({ "[q", mode = { "n" }, desc = "Jump to the previous entry (quickfix list)" }),
-    ({ "]q", mode = { "n" }, desc = "Jump to the next entry (quickfix list)" }),
-    ({ "]Q", mode = { "n" }, desc = "Jump to the first entry (quickfix list)" }),
-    ({ "]Q", mode = { "n" }, desc = "Jump to the last entry (quickfix list)" }),
-    ({ "[<C-q>", mode = { "n" }, desc = "Jump to the last entry in the previous file (quickfix list)" }),
-    ({ "]<C-q>", mode = { "n" }, desc = "Jump to the first entry int the next file (quickfix list)" }),
-    ({ "[l", mode = { "n" }, desc = "Jump to the previous entry (location list)" }),
-    ({ "]l", mode = { "n" }, desc = "Jump to the next entry (location list)" }),
-    ({ "]L", mode = { "n" }, desc = "Jump to the first entry (location list)" }),
-    ({ "]L", mode = { "n" }, desc = "Jump to the last entry (location list)" }),
-    ({ "[<C-l>", mode = { "n" }, desc = "Jump to the last entry in the previous file (location list)" }),
-    ({ "]<C-l>", mode = { "n" }, desc = "Jump to the first entry int the next file (location list)" }),
-    ({ "[t", mode = { "n" }, desc = "Jump to the previous matching tag" }),
-    ({ "]t", mode = { "n" }, desc = "Jump to the next matching tag" }),
-    ({ "]t", mode = { "n" }, desc = "Jump to the first matching tag" }),
-    ({ "]t", mode = { "n" }, desc = "Jump to the last matching tag" }),
-    ({ "[<C-t>", mode = { "n" }, desc = "Jump to the last matching tag" }),
-    ({ "]<C-t>", mode = { "n" }, desc = "Jump to the first matching tag" }),
-    ({ "[a", mode = { "n" }, desc = "Jump to the previous file in the argument list" }),
-    ({ "]a", mode = { "n" }, desc = "Jump to the next file in the argument list" }),
-    ({ "[A", mode = { "n" }, desc = "Jump to the first file in the argument list" }),
-    ({ "]A", mode = { "n" }, desc = "Jump to the last file in the argument list" }),
-    ({ "[b", mode = { "n" }, desc = "Jump to the previous buffer in the buffer list" }),
-    ({ "]b", mode = { "n" }, desc = "Jump to the next buffer in the buffer list" }),
-    ({ "[B", mode = { "n" }, desc = "Jump to the first buffer in the buffer list" }),
-    ({ "]B", mode = { "n" }, desc = "Jump to the last buffer in the buffer list" }),
-    ({ "[<space>", mode = { "n" }, desc = "Insert an empty line to the previous line" }),
-    ({ "]<space>", mode = { "n" }, desc = "Insert an empty line to the next line" }),
-    -- General
-    ({ "<C-e>", mode = { "i", "s" }, desc = "Cancel/abort (blink.cmp, fzf-lua)", noremap = true, silent = true }),
-    ({ "<up>", mode = { "i", "s" }, desc = "Go to previous or go up (blink.cmp, fzf-lua)", noremap = true, silent = true }),
-    ({ "<C-p>", mode = { "i", "s" }, desc = "Go to previous or go up (blink.cmp, fzf-lua)", noremap = true, silent = true }),
-    ({ "<down>", mode = { "i", "s" }, desc = "Go to next or go down (blink.cmp, fzf-lua)", noremap = true, silent = true }),
-    ({ "<C-n>", mode = { "i", "s" }, desc = "Go to next or go down (blink.cmp, fzf-lua)", noremap = true, silent = true }),
-    ({ "<C-y>", mode = { "i", "s" }, desc = "Accept (blink.cmp, fzf-lua)", noremap = true, silent = true }),
-    -- blink.cmp (default settings)
-    ({ "<C-space>", mode = { "i" }, desc = "Show completion list or documentation or hide documentation", noremap = true, silent = true }),
-    ({ "<C-b>", mode = { "i" }, desc = "Scroll documentation up", noremap = true, silent = true }),
-    ({ "<C-f>", mode = { "i" }, desc = "Scroll documentation down", noremap = true, silent = true }),
-    ({ "<tab>", mode = { "i", "s" }, desc = "Snippet forward", noremap = true, silent = true }),
-    ({ "<S-tab>", mode = { "i", "s" }, desc = "Snippet backwards", noremap = true, silent = true }),
-    ({ "<C-k>", mode = { "i", "s" }, desc = "Show signature", noremap = true, silent = true }),
-    ({ "<A-1>", mode = { "i", "s" }, desc = "Select 1st suggestion", noremap = true, silent = true }),
-    ({ "<A-2>", mode = { "i", "s" }, desc = "Select 2nd suggestion", noremap = true, silent = true }),
-    ({ "<A-3>", mode = { "i", "s" }, desc = "Select 3th suggestion", noremap = true, silent = true }),
-    ({ "<A-4>", mode = { "i", "s" }, desc = "Select 4th suggestion", noremap = true, silent = true }),
-    ({ "<A-5>", mode = { "i", "s" }, desc = "Select 5th suggestion", noremap = true, silent = true }),
-    ({ "<A-6>", mode = { "i", "s" }, desc = "Select 6th suggestion", noremap = true, silent = true }),
-    ({ "<A-7>", mode = { "i", "s" }, desc = "Select 7th suggestion", noremap = true, silent = true }),
-    ({ "<A-8>", mode = { "i", "s" }, desc = "Select 8th suggestion", noremap = true, silent = true }),
-    ({ "<A-9>", mode = { "i", "s" }, desc = "Select 9th suggestion", noremap = true, silent = true }),
-    ({ "<A-0>", mode = { "i", "s" }, desc = "Select 10th suggestion", noremap = true, silent = true }),
-    -- DAP
-    ({ "<F5>", "<cmd>DapContinue<cr>", mode = { "n", "i", "v" }, desc = "Start/continue debug", noremap = true, silent = true }),
-    ({ "<F5>", require("dap-python").debug_selection, mode = { "s" }, desc = "Debug the code (Python)", noremap = true, silent = true }),
-    ({ "<C-F5>", require("dap").run_to_cursor, mode = { "n", "i", "v", "s" }, desc = "Run to cursor", noremap = true, silent = true }),
-    ({ "<S-F5>", "<cmd>DapTerminate<cr>", mode = { "n", "i", "v", "s" }, desc = "Stop debugger", noremap = true, silent = true }),
-    ({ "<C-S-F5>", require("dap").restart, mode = { "n", "i", "v", "s" }, desc = "Restart debugger", noremap = true, silent = true }),
-    ({ "<F9>", "<cmd>DapToggleBreakpoint<cr>", mode = { "n", "i", "v", "s" }, desc = "Toggle breakpoint", noremap = true, silent = true }),
-    ({ "<S-F9>", "<cmd>DapClearBreakPoints<cr>", mode = { "n", "i", "v", "s" }, desc = "Clear breakpoints", noremap = true, silent = true }),
-    ({ "<C-S-F9>", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, mode = { "n", "i", "v", "s" }, desc = "Set conditional breakpoint", noremap = true, silent = true }),
-    ({ "<F10>", "<cmd>DapStepOver<cr>", mode = { "n", "i", "v", "s" }, desc = "Step over", noremap = true, silent = true }),
-    ({ "<F11>", "<cmd>DapSetpInto<cr>", mode = { "n", "i", "v", "s" }, desc = "Step into", noremap = true, silent = true }),
-    ({ "<S-F11>", "<cmd>DapStepOut<cr>", mode = { "n", "i", "v", "s" }, desc = "Step out", noremap = true, silent = true }),
-    ({ "<F12>", require("dap-python").test_method, mode = { "n", "i", "v", "s" }, desc = "Test method (Python)" }),
-    ({ "<S-F12>", require("dap-python").test_class, mode = { "n", "i", "v", "s" }, desc = "Test class (Python)" }),
-    ({ "dr", "<cmd>DapToggleRepl<cr>", mode = { "n" }, desc = "Toggle REPL", noremap = true, silent = true }),
-    ({ "dp", require("dap.ui.widgets").preview, mode = { "n" }, desc = "Preview in debug", noremap = true, silent = true }),
-    ({ "dK", require("dap.ui.widgets").hover, mode = { "n" }, desc = "Hover in debug", noremap = true, silent = true }),
-    -- DAP UI
-    ({ "du", require("dapui").toggle, mode = { "n" }, desc = "Toggle REPL", noremap = true, silent = true }),
-    -- fzf-lua
-    ({ "<leader>f", group = "fzf" }),
-    ({ "<leader>f<leader>", "<cmd>FzfLua<cr>", mode = { "n" }, desc = "Fzf overview", noremap = true, silent = true }),
-    ({ "<leader>fb", require("fzf-lua").buffers, mode = { "n" }, desc = "Fzf buffers", noremap = true, silent = true }),
-    ({ "<leader>ff", require("fzf-lua").files, mode = { "n" }, desc = "Fzf files", noremap = true, silent = true }),
-    ({ "<leader>fh", require("fzf-lua").files, mode = { "n" }, desc = "Fzf opened files history", noremap = true, silent = true }),
-    ({ "<leader>fl", require("fzf-lua").live_grep_native, mode = { "n" }, desc = "Live grep current project", noremap = true, silent = true }),
-    ({ "<leader>fq", require("fzf-lua").quickfix, mode = { "n" }, desc = "Fzf quickfix list", noremap = true, silent = true }),
-    ({ "<leader>fr", require("fzf-lua").resume, mode = { "n" }, desc = "Resuming work from where left off", noremap = true, silent = true }),
-    ({ "<leader>fT", require("fzf-lua").tabs, mode = { "n" }, desc = "Fzf open tabs", noremap = true, silent = true }),
-    ({ "<leader>fd", group = "Diagnostics & LSP" }),
-    ({ "<leader>fdr", require("fzf-lua").lsp_references, mode = { "n" }, desc = "References", noremap = true, silent = true }),
-    ({ "<leader>fdd", require("fzf-lua").lsp_definitions, mode = { "n" }, desc = "Definitions", noremap = true, silent = true }),
-    ({ "<leader>fdD", require("fzf-lua").lsp_declarations, mode = { "n" }, desc = "Declarations", noremap = true, silent = true }),
-    ({ "<leader>fdt", require("fzf-lua").lsp_typedefs, mode = { "n" }, desc = "Type definitions", noremap = true, silent = true }),
-    ({ "<leader>fdi", require("fzf-lua").lsp_implementations, mode = { "n" }, desc = "Implementations", noremap = true, silent = true }),
-    ({ "<leader>fds", require("fzf-lua").lsp_document_symbols, mode = { "n" }, desc = "Document symbols", noremap = true, silent = true }),
-    ({ "<leader>fdS", require("fzf-lua").lsp_workspace_symbols, mode = { "n" }, desc = "Workspace symbols", noremap = true, silent = true }),
-    ({ "<leader>fd<C-s>", require("fzf-lua").lsp_live_workspace_symbols, mode = { "n" }, desc = "Workspace symbols (live query)", noremap = true, silent = true }),
-    ({ "<leader>fdc", require("fzf-lua").lsp_incoming_calls, mode = { "n" }, desc = "Incoming calls", noremap = true, silent = true }),
-    ({ "<leader>fdC", require("fzf-lua").lsp_outcoming_calls, mode = { "n" }, desc = "Incoming calls", noremap = true, silent = true }),
-    ({ "<leader>fda", require("fzf-lua").lsp_code_actions, mode = { "n" }, desc = "Code actions", noremap = true, silent = true }),
-    ({ "<leader>fdf", require("fzf-lua").lsp_finder, mode = { "n" }, desc = "Finder - all LSP locations & combined view", noremap = true, silent = true }),
-    ({ "<leader>fd<C-d>", require("fzf-lua").diagnostics_document, mode = { "n" }, desc = "Document diagnostics", noremap = true, silent = true }),
-    ({ "<leader>fd<C-w>", require("fzf-lua").diagnostics_workspace, mode = { "n" }, desc = "Workspace diagnostics", noremap = true, silent = true }),
-    ({ "<leader>fg", group = "Git" }),
-    ({ "<leader>fgf", require("fzf-lua").git_files, mode = { "n" }, desc = "git ls-files", noremap = true, silent = true }),
-    ({ "<leader>fgs", require("fzf-lua").git_status, mode = { "n" }, desc = "git status", noremap = true, silent = true }),
-    ({ "<leader>fgc", require("fzf-lua").git_bcommits, mode = { "n" }, desc = "git commit log (in buffer)", noremap = true, silent = true }),
-    ({ "<leader>fgC", require("fzf-lua").git_commits, mode = { "n" }, desc = "git commit log (in project)", noremap = true, silent = true }),
-    ({ "<leader>fgb", require("fzf-lua").git_branches, mode = { "n" }, desc = "git branches", noremap = true, silent = true }),
-    ({ "<leader>fgB", require("fzf-lua").git_blame, mode = { "n" }, desc = "git blame", noremap = true, silent = true }),
-    ({ "<leader>fgt", require("fzf-lua").git_tags, mode = { "n" }, desc = "git tags", noremap = true, silent = true }),
-    ({ "<leader>fgS", require("fzf-lua").git_stash, mode = { "n" }, desc = "git stash", noremap = true, silent = true }),
-    ({ "<leader>fs", group = "Search" }),
-    ({ "<leader>fsb", require("fzf-lua").lgrep_curbuf, mode = { "n" }, desc = "Live grep current buffer", noremap = true, silent = true }),
-    ({ "<leader>fsq", require("fzf-lua").lgrep_quickfix, mode = { "n" }, desc = "Live grep quickfix list", noremap = true, silent = true }),
-    ({ "<leader>fsl", require("fzf-lua").lgrep_loclist, mode = { "n" }, desc = "Live grep location list", noremap = true, silent = true }),
-    ({ "<leader>fst", require("fzf-lua").tags_live_grep, mode = { "n" }, desc = "Live grep project tags", noremap = true, silent = true }),
-    ({ "<leader>fsT", require("fzf-lua").tags_grep, mode = { "n" }, desc = "Grep project tags", noremap = true, silent = true }),
-    ({ "<leader>fsg", require("fzf-lua").tags_grep, mode = { "n" }, desc = "Grep a pattern in the current project", noremap = true, silent = true }),
-    ({ "<leader>fsl", require("fzf-lua").grep_last, mode = { "n" }, desc = "Run search again with the last pattern", noremap = true, silent = true }),
-    ({ "<leader>fsw", require("fzf-lua").grep_cword, mode = { "n" }, desc = "Search word under the cursor", noremap = true, silent = true }),
-    ({ "<leader>fsW", require("fzf-lua").grep_cWord, mode = { "n" }, desc = "Search WORD under the cursor", noremap = true, silent = true }),
-    ({ "<leader>fsv", require("fzf-lua").grep_visual, mode = { "n" }, desc = "Search visual selection", noremap = true, silent = true }),
-    ({ "<leader>fsB", require("fzf-lua").grep_curbuf, mode = { "n" }, desc = "Grep current buffer", noremap = true, silent = true }),
-    ({ "<leader>fsQ", require("fzf-lua").grep_quickfix, mode = { "n" }, desc = "Grep quickfix list", noremap = true, silent = true }),
-    ({ "<leader>fsL", require("fzf-lua").grep_loclist, mode = { "n" }, desc = "Grep location list", noremap = true, silent = true }),
-    ({ "<leader>ft", group = "Tags" }),
-    ({ "<leader>ftt", require("fzf-lua").tags, mode = { "n" }, desc = "Search project tags", noremap = true, silent = true }),
-    ({ "<leader>ftb", require("fzf-lua").btags, mode = { "n" }, desc = "Search buffer tags", noremap = true, silent = true }),
-    ({ "<leader>ftw", require("fzf-lua").tag_grep_cword, mode = { "n" }, desc = "Tags grep word under the cursor", noremap = true, silent = true }),
-    ({ "<leader>ftW", require("fzf-lua").tag_grep_cWord, mode = { "n" }, desc = "Tags grep WORD under the cursor", noremap = true, silent = true }),
-    ({ "<leader>ftv", require("fzf-lua").tag_grep_visual, mode = { "n" }, desc = "Tags grep visual selection", noremap = true, silent = true }),
-    ({ "<leader>fx", group = "Extra" }),
-    ({ "<leader>fxa", require("fzf-lua").args, mode = { "n" }, desc = "Fzf argument list", noremap = true, silent = true }),
-    ({ "<leader>fxc", require("fzf-lua").command_history, mode = { "n" }, desc = "Fzf command history", noremap = true, silent = true }),
-    ({ "<leader>fxl", require("fzf-lua").loclist, mode = { "n" }, desc = "Fzf location list", noremap = true, silent = true }),
-    ({ "<leader>fxL", require("fzf-lua").loclist_stack, mode = { "n" }, desc = "Fzf location stack", noremap = true, silent = true }),
-    ({ "<leader>fxr", require("fzf-lua").registers, mode = { "n" }, desc = "Fzf registers", noremap = true, silent = true }),
-    ({ "<leader>fxs", require("fzf-lua").search_history, mode = { "n" }, desc = "Fzf search history", noremap = true, silent = true }),
-    ({ "<leader>fxt", require("fzf-lua").args, mode = { "n" }, desc = "Ffzf current buffer treesitter symbols", noremap = true, silent = true }),
-    -- KeyAnalyzer
-    ({ "<leader>k", function() require("key-analyzer").show(vim.fn.input("Choose mode (n, i, v, s): "),
-        vim.fn.input("Show mapping prefix (e.g: <leader>, <C-, etc.): ")) end, mode = { "n" }, desc = "Key Analyzer", noremap = true, silent = true }),
-    -- LSP
-    ({ "gd", vim.lsp.buf.definition, mode = { "n" }, desc = "Jump to the definition of the symbol under the cursor", noremap = true, silent = true }),
-    ({ "gD", vim.lsp.buf.declaration, mode = { "n" }, desc = "Jump to the declaration of the symbol under the cursor", noremap = true, silent = true }),
-    ({ "grt", vim.lsp.buf.type_definition, mode = { "n" }, desc = "Jump to the definition of the type of the symbol under the cursor", noremap = true, silent = true }),
-    ({ "grf", vim.lsp.buf.format, mode = { "n" }, desc = "Format a buffer using the attached (and optionally filtered) language server clients", noremap = true, silent = true }),
-    ({ "grs", vim.lsp.buf.document_symbol, mode = { "n" }, desc = "List all symbols in the current buffer in the location list", noremap = true, silent = true }),
-    -- mini.jump2d
-    ({ "<cr>", mode = { "n", "v" }, desc = "Jump within vsible lines", noremap = true, silent = true }),
-    -- Neogen - annotation generator
-    ({ "<leader>a", group = "Neogen (annotation generator)" }),
-    ({ "<leader>aa", function () require("neogen").generate() end, mode = "n", desc = "Generate annotation (automatically)", noremap = true, silent = true }),
-    ({ "<leader>ac", function () require("neogen").generate({ type = "class" }) end, mode = "n", desc = "Generate annotation (class)", noremap = true, silent = true }),
-    ({ "<leader>af", function () require("neogen").generate({ type = "func" }) end, mode = "n", desc = "Generate annotation (function)", noremap = true, silent = true }),
-    ({ "<leader>aF", function () require("neogen").generate({ type = "file" }) end, mode = "n", desc = "Generate annotation (File)", noremap = true, silent = true }),
-    ({ "<leader>at", function () require("neogen").generate({ type = "type" }) end, mode = "n", desc = "Generate annotation (type)", noremap = true, silent = true }),
-    -- Treesitter
-    ({ "gn", group = "Treesitter keymaps" }),
-    ({ "gnd", mode = "n", desc = "Go to definition" }),
-    ({ "gnO", mode = "n", desc = "List definitions ToC" }),
-    ({ "gnn", mode = "n", desc = "Go to next usage" }),
-    ({ "gnp", mode = "n", desc = "Go to previous usage" }),
-    -- Trouble
-    ({ "<leader>t", group = "Trouble keymaps" }),
-    ({ "<leader>t<space>", "<cmd>Trouble<cr>", mode = { "n" }, desc = "Enter Trouble menu", noremap = true, silent = true }),
-    ({ "<leader>tl", "<cmd>Trouble lsp toggle filter.buf=0<cr>", mode = { "n" }, desc = "Toggle lsp (for current buffer only)", noremap = true, silent = true }),
-    ({ "<leader>tL", "<cmd>Trouble lsp toggle<cr>", mode = { "n" }, desc = "Toggle lsp", noremap = true, silent = true }),
-    ({ "<leader>t<C-l>", "<cmd>Trouble loclist toggle<cr>", mode = { "n" }, desc = "Toggle loclist", noremap = true, silent = true }),
-    ({ "<leader>tq", "<cmd>Trouble qflist toggle<cr>", mode = { "n" }, desc = "Toggle quickfix", noremap = true, silent = true }),
-    ({ "<leader>ts", "<cmd>Trouble lsp_document_symbols toggle win.position=right<cr>", mode = { "n" }, desc = "Toggle document symbols", noremap = true, silent = true }),
-    ({ "<leader>td", "<cmd>Trouble lsp_definitions<cr>", mode = { "n" }, desc = "Toggle definitions", noremap = true, silent = true }),
-    ({ "<leader>tD", "<cmd>Trouble lsp_declarations<cr>", mode = { "n" }, desc = "Toggle declaratios", noremap = true, silent = true }),
-    ({ "<leader>t<C-d>", group = "Diagnostics" }),
-    ({ "<leader>t<C-d>d", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", mode = { "n" }, desc = "Toggle diagnostics (for current buffer only)", noremap = true, silent = true }),
-    ({ "<leader>t<C-d>D", "<cmd>Trouble diagnostics toggle<cr>", mode = { "n" }, desc = "Toggle diagnostics", noremap = true, silent = true }),
-    ({ "<leader>ti", "<cmd>Trouble lsp_implementations<cr>", mode = { "n" }, desc = "Toggle implementations", noremap = true, silent = true }),
-    ({ "<leader>tr", "<cmd>Trouble lsp_references<cr>", mode = { "n" }, desc = "Toggle references", noremap = true, silent = true }),
-    -- Twilight
-    ({ "<A-t>", "<cmd>Twilight<cr>", mode = { "n", "i", "v", "s" }, desc = "Toggle Twilight" })
-  }
-)
+wk.add({
+	-- Prefix groups
+	{ "<leader>", group = "Plugins" },
+	{ "<leader>a", group = "Sidekick (AI NES + CLI)" },
+	{ "<leader>f", group = "fzf" },
+	{ "<leader>fd", group = "Diagnostics & LSP" },
+	{ "<leader>fg", group = "Git (fzf)" },
+	{ "<leader>fs", group = "Search" },
+	{ "<leader>ft", group = "Tags" },
+	{ "<leader>fx", group = "Extra" },
+	{ "<leader>G", group = "Git: Fugitive" },
+	{ "<leader>g", group = "Gitsigns" },
+	{ "<leader>i", group = "Avante (AI panel)" },
+	{ "<leader>l", group = "Language tools" },
+	{ "<leader>n", group = "Neogen (annotation generator)" },
+	{ "<leader>N", group = "Namu (symbol picker)" },
+	{ "<leader>o", group = "Overseer (task runner)" },
+	{ "<leader>r", group = "Run (sniprun)" },
+	{ "<leader>t", group = "Trouble" },
+	{ "<leader>t<C-d>", group = "Diagnostics" },
+	{ "gn", group = "Treesitter keymaps" },
+	{ "gr", group = "LSP keymaps" },
+	{ "[", mode = { "n" }, group = "Previous/first ..." },
+	{ "]", mode = { "n" }, group = "Next/last ..." },
+	-- Default NVim mappings
+	{ "Y", mode = { "n" }, desc = "Yank till end of line (y$)" },
+	{ "<C-u>", mode = { "i" }, desc = "Delete all entered chars before cursor in line" },
+	{ "<C-w>", mode = { "i" }, desc = "Delete word before cursor" },
+	{ "<C-l>", mode = { "n", "i" }, desc = "Clear and redraw screen" },
+	{ "&", mode = { "n" }, desc = "Repeat last substitute (:s)" },
+	{ "g&", mode = { "n" }, desc = "Repeat last substitute globally (:%s)" },
+	{ "grn", mode = { "n" }, desc = "Rename all references to symbol under cursor" },
+	{ "grr", mode = { "n" }, desc = "List references to symbol (quickfix)" },
+	{ "gra", mode = { "n" }, desc = "Code action at cursor" },
+	{ "gri", mode = { "n" }, desc = "List implementations (quickfix)" },
+	{ "gO", mode = { "n" }, desc = "List buffer symbols (location list)" },
+	{ "<C-s>", mode = { "i", "s" }, desc = "Signature information (floating)" },
+	{ "<C-w>d", mode = { "n" }, desc = "Show diagnostic under cursor" },
+	{ "<C-w><C-d>", mode = { "n" }, desc = "Show diagnostic under cursor" },
+	{ "K", mode = { "n" }, desc = "Hover information (floating)" },
+	{ "[d", mode = { "n" }, desc = "Jump to previous diagnostic" },
+	{ "]d", mode = { "n" }, desc = "Jump to next diagnostic" },
+	{ "[D", mode = { "n" }, desc = "Jump to first diagnostic in buffer" },
+	{ "]D", mode = { "n" }, desc = "Jump to last diagnostic in buffer" },
+	{ "[q", mode = { "n" }, desc = "Jump to previous quickfix entry" },
+	{ "]q", mode = { "n" }, desc = "Jump to next quickfix entry" },
+	{ "[Q", mode = { "n" }, desc = "Jump to first quickfix entry" },
+	{ "]Q", mode = { "n" }, desc = "Jump to last quickfix entry" },
+	{ "[l", mode = { "n" }, desc = "Jump to previous location-list entry" },
+	{ "]l", mode = { "n" }, desc = "Jump to next location-list entry" },
+	{ "[L", mode = { "n" }, desc = "Jump to first location-list entry" },
+	{ "]L", mode = { "n" }, desc = "Jump to last location-list entry" },
+	{ "[t", mode = { "n" }, desc = "Jump to previous matching tag" },
+	{ "]t", mode = { "n" }, desc = "Jump to next matching tag" },
+	{ "[a", mode = { "n" }, desc = "Jump to previous argument" },
+	{ "]a", mode = { "n" }, desc = "Jump to next argument" },
+	{ "[A", mode = { "n" }, desc = "Jump to first argument" },
+	{ "]A", mode = { "n" }, desc = "Jump to last argument" },
+	{ "[b", mode = { "n" }, desc = "Jump to previous buffer" },
+	{ "]b", mode = { "n" }, desc = "Jump to next buffer" },
+	{ "[B", mode = { "n" }, desc = "Jump to first buffer" },
+	{ "]B", mode = { "n" }, desc = "Jump to last buffer" },
+	{ "[<space>", mode = { "n" }, desc = "Insert empty line above" },
+	{ "]<space>", mode = { "n" }, desc = "Insert empty line below" },
+	-- General
+	{ "<C-e>", mode = { "i", "s" }, desc = "Cancel/abort (blink.cmp, fzf-lua)", noremap = true, silent = true },
+	{ "<up>", mode = { "i", "s" }, desc = "Go up (blink.cmp, fzf-lua)", noremap = true, silent = true },
+	{ "<C-p>", mode = { "i", "s" }, desc = "Go up (blink.cmp, fzf-lua)", noremap = true, silent = true },
+	{ "<down>", mode = { "i", "s" }, desc = "Go down (blink.cmp, fzf-lua)", noremap = true, silent = true },
+	{ "<C-n>", mode = { "i", "s" }, desc = "Go down (blink.cmp, fzf-lua)", noremap = true, silent = true },
+	{ "<C-y>", mode = { "i", "s" }, desc = "Accept (blink.cmp, fzf-lua)", noremap = true, silent = true },
+	-- blink.cmp
+	{ "<C-space>", mode = { "i" }, desc = "Show/hide completion docs", noremap = true, silent = true },
+	{ "<C-b>", mode = { "i" }, desc = "Scroll docs up", noremap = true, silent = true },
+	{ "<C-f>", mode = { "i" }, desc = "Scroll docs down", noremap = true, silent = true },
+	{ "<S-tab>", mode = { "i", "s" }, desc = "Snippet backward", noremap = true, silent = true },
+	{ "<C-k>", mode = { "i", "s" }, desc = "Show signature", noremap = true, silent = true },
+	{ "<A-1>", mode = { "i", "s" }, desc = "Accept 1st suggestion", noremap = true, silent = true },
+	{ "<A-2>", mode = { "i", "s" }, desc = "Accept 2nd suggestion", noremap = true, silent = true },
+	{ "<A-3>", mode = { "i", "s" }, desc = "Accept 3rd suggestion", noremap = true, silent = true },
+	{ "<A-4>", mode = { "i", "s" }, desc = "Accept 4th suggestion", noremap = true, silent = true },
+	{ "<A-5>", mode = { "i", "s" }, desc = "Accept 5th suggestion", noremap = true, silent = true },
+	{ "<A-6>", mode = { "i", "s" }, desc = "Accept 6th suggestion", noremap = true, silent = true },
+	{ "<A-7>", mode = { "i", "s" }, desc = "Accept 7th suggestion", noremap = true, silent = true },
+	{ "<A-8>", mode = { "i", "s" }, desc = "Accept 8th suggestion", noremap = true, silent = true },
+	{ "<A-9>", mode = { "i", "s" }, desc = "Accept 9th suggestion", noremap = true, silent = true },
+	{ "<A-0>", mode = { "i", "s" }, desc = "Accept 10th suggestion", noremap = true, silent = true },
+	-- Tab
+	-- Insert/select mode: handled by blink.cmp opts in code.lua
+	{
+		"<Tab>",
+		mode = { "i", "s" },
+		desc = "Snippet fwd / Sidekick NES jump-or-apply / inline completion",
+		noremap = true,
+		silent = true,
+	},
+	-- Normal mode: handled by sidekick.nvim keys spec in code.lua
+	{ "<Tab>", mode = { "n" }, desc = "Sidekick: NES jump or apply", noremap = true, silent = true },
+	-- LSP
+	{
+		"gd",
+		vim.lsp.buf.definition,
+		mode = { "n" },
+		desc = "Jump to definition",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"gD",
+		vim.lsp.buf.declaration,
+		mode = { "n" },
+		desc = "Jump to declaration",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"grt",
+		vim.lsp.buf.type_definition,
+		mode = { "n" },
+		desc = "Jump to type definition",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"grs",
+		vim.lsp.buf.document_symbol,
+		mode = { "n" },
+		desc = "List document symbols",
+		noremap = true,
+		silent = true,
+	},
+	-- grf → conform (replaces vim.lsp.buf.format)
+	{
+		"grf",
+		function()
+			require("conform").format({ async = true, lsp_fallback = true })
+		end,
+		mode = { "n" },
+		desc = "Format buffer (conform)",
+		noremap = true,
+		silent = true,
+	},
+	-- Sidekick
+	{ "<leader>?", require("which-key").show, desc = "Buffer keymaps (which-key)", noremap = true, silent = true },
+	{ "<leader>at", desc = "Sidekick: toggle CLI" },
+	{ "<leader>as", desc = "Sidekick: select tool" },
+	{ "<leader>ac", desc = "Sidekick: close CLI" },
+	{ "<leader>ap", desc = "Sidekick: prompt" },
+	{ "<leader>ae", mode = { "v" }, desc = "Sidekick: send selection" },
+	-- Avante
+	{ "<leader>it", desc = "Avante: toggle panel" },
+	{ "<leader>ia", desc = "Avante: ask" },
+	{ "<leader>ir", desc = "Avante: refresh" },
+	{ "<leader>if", desc = "Avante: focus" },
+	{ "<leader>ie", mode = { "n", "v" }, desc = "Avante: edit selection (visual)" },
+	-- Buffer-local <leader>lr (render-markdown) and <leader>lm (nabla) are
+	-- registered via FileType autocmds in languages.lua.
+	{
+		"<leader>ll",
+		function()
+			require("lint").try_lint()
+		end,
+		mode = { "n" },
+		desc = "Run linter (nvim-lint)",
+		noremap = true,
+		silent = true,
+	},
+	{ "<leader>lr", desc = "Toggle render-markdown (markdown buffers)" },
+	{ "<leader>lm", desc = "Toggle nabla math preview (tex/markdown buffers)" },
+	-- Neogen
+	{
+		"<leader>na",
+		function()
+			require("neogen").generate()
+		end,
+		mode = "n",
+		desc = "Generate annotation (auto)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>nc",
+		function()
+			require("neogen").generate({ type = "class" })
+		end,
+		mode = "n",
+		desc = "Generate annotation (class)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>nf",
+		function()
+			require("neogen").generate({ type = "func" })
+		end,
+		mode = "n",
+		desc = "Generate annotation (function)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>nF",
+		function()
+			require("neogen").generate({ type = "file" })
+		end,
+		mode = "n",
+		desc = "Generate annotation (file)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>nt",
+		function()
+			require("neogen").generate({ type = "type" })
+		end,
+		mode = "n",
+		desc = "Generate annotation (type)",
+		noremap = true,
+		silent = true,
+	},
+	-- Gitsigns
+	{ "]g", mode = { "n" }, desc = "Gitsigns: next hunk" },
+	{ "[g", mode = { "n" }, desc = "Gitsigns: previous hunk" },
+	{ "<leader>gs", mode = { "n", "v" }, desc = "Gitsigns: stage hunk" },
+	{ "<leader>gr", mode = { "n", "v" }, desc = "Gitsigns: reset hunk" },
+	{ "<leader>gS", mode = { "n" }, desc = "Gitsigns: stage buffer" },
+	{ "<leader>gR", mode = { "n" }, desc = "Gitsigns: reset buffer" },
+	{ "<leader>gu", mode = { "n" }, desc = "Gitsigns: undo stage hunk" },
+	{ "<leader>gp", mode = { "n" }, desc = "Gitsigns: preview hunk" },
+	{ "<leader>gb", mode = { "n" }, desc = "Gitsigns: blame line" },
+	{ "<leader>gB", mode = { "n" }, desc = "Gitsigns: blame buffer" },
+	{ "<leader>gd", mode = { "n" }, desc = "Gitsigns: diff this" },
+	{ "<leader>gD", mode = { "n" }, desc = "Gitsigns: diff this ~" },
+	{ "<leader>gt", mode = { "n" }, desc = "Gitsigns: toggle deleted" },
+	{ "ih", mode = { "o", "x" }, desc = "Gitsigns: select hunk (text obj)" },
+	-- DAP
+	{
+		"<F5>",
+		"<cmd>DapContinue<cr>",
+		mode = { "n", "i", "v" },
+		desc = "Start/continue debug",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<F5>",
+		function()
+			require("dap-python").debug_selection()
+		end,
+		mode = { "s" },
+		desc = "Debug selection (Python)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<C-F5>",
+		function()
+			require("dap").run_to_cursor()
+		end,
+		mode = { "n", "i", "v", "s" },
+		desc = "Run to cursor",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<S-F5>",
+		"<cmd>DapTerminate<cr>",
+		mode = { "n", "i", "v", "s" },
+		desc = "Stop debugger",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<C-S-F5>",
+		function()
+			require("dap").restart()
+		end,
+		mode = { "n", "i", "v", "s" },
+		desc = "Restart debugger",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<F9>",
+		"<cmd>DapToggleBreakpoint<cr>",
+		mode = { "n", "i", "v", "s" },
+		desc = "Toggle breakpoint",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<S-F9>",
+		"<cmd>DapClearBreakpoints<cr>",
+		mode = { "n", "i", "v", "s" },
+		desc = "Clear breakpoints",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<C-S-F9>",
+		function()
+			require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
+		end,
+		mode = { "n", "i", "v", "s" },
+		desc = "Set conditional breakpoint",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<F10>",
+		"<cmd>DapStepOver<cr>",
+		mode = { "n", "i", "v", "s" },
+		desc = "Step over",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<F11>",
+		"<cmd>DapStepInto<cr>",
+		mode = { "n", "i", "v", "s" },
+		desc = "Step into",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<S-F11>",
+		"<cmd>DapStepOut<cr>",
+		mode = { "n", "i", "v", "s" },
+		desc = "Step out",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<F12>",
+		function()
+			require("dap-python").test_method()
+		end,
+		mode = { "n", "i", "v", "s" },
+		desc = "Test method (Python)",
+	},
+	{
+		"<S-F12>",
+		function()
+			require("dap-python").test_class()
+		end,
+		mode = { "n", "i", "v", "s" },
+		desc = "Test class (Python)",
+	},
+	{
+		"dr",
+		"<cmd>DapToggleRepl<cr>",
+		mode = { "n" },
+		desc = "Toggle REPL",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"dp",
+		function()
+			require("dap.ui.widgets").preview()
+		end,
+		mode = { "n" },
+		desc = "Preview (debug)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"dK",
+		function()
+			require("dap.ui.widgets").hover()
+		end,
+		mode = { "n" },
+		desc = "Hover (debug)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"du",
+		function()
+			require("dapui").toggle()
+		end,
+		mode = { "n" },
+		desc = "Toggle DAP UI",
+		noremap = true,
+		silent = true,
+	},
+	-- fzf-lua
+	{
+		"<leader>f<leader>",
+		"<cmd>FzfLua<cr>",
+		mode = { "n" },
+		desc = "Fzf overview",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fb",
+		function()
+			require("fzf-lua").buffers()
+		end,
+		mode = { "n" },
+		desc = "Fzf buffers",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>ff",
+		function()
+			require("fzf-lua").files()
+		end,
+		mode = { "n" },
+		desc = "Fzf files",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fh",
+		function()
+			require("fzf-lua").oldfiles()
+		end,
+		mode = { "n" },
+		desc = "Fzf file history",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fl",
+		function()
+			require("fzf-lua").live_grep_native()
+		end,
+		mode = { "n" },
+		desc = "Live grep project",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fq",
+		function()
+			require("fzf-lua").quickfix()
+		end,
+		mode = { "n" },
+		desc = "Fzf quickfix list",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fr",
+		function()
+			require("fzf-lua").resume()
+		end,
+		mode = { "n" },
+		desc = "Fzf resume",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fT",
+		function()
+			require("fzf-lua").tabs()
+		end,
+		mode = { "n" },
+		desc = "Fzf open tabs",
+		noremap = true,
+		silent = true,
+	},
+	-- fzf: Diagnostics & LSP
+	{
+		"<leader>fdr",
+		function()
+			require("fzf-lua").lsp_references()
+		end,
+		mode = { "n" },
+		desc = "References",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fdd",
+		function()
+			require("fzf-lua").lsp_definitions()
+		end,
+		mode = { "n" },
+		desc = "Definitions",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fdD",
+		function()
+			require("fzf-lua").lsp_declarations()
+		end,
+		mode = { "n" },
+		desc = "Declarations",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fdt",
+		function()
+			require("fzf-lua").lsp_typedefs()
+		end,
+		mode = { "n" },
+		desc = "Type definitions",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fdi",
+		function()
+			require("fzf-lua").lsp_implementations()
+		end,
+		mode = { "n" },
+		desc = "Implementations",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fds",
+		function()
+			require("fzf-lua").lsp_document_symbols()
+		end,
+		mode = { "n" },
+		desc = "Document symbols",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fdS",
+		function()
+			require("fzf-lua").lsp_workspace_symbols()
+		end,
+		mode = { "n" },
+		desc = "Workspace symbols",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fd<C-s>",
+		function()
+			require("fzf-lua").lsp_live_workspace_symbols()
+		end,
+		mode = { "n" },
+		desc = "Workspace symbols (live)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fdc",
+		function()
+			require("fzf-lua").lsp_incoming_calls()
+		end,
+		mode = { "n" },
+		desc = "Incoming calls",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fdC",
+		function()
+			require("fzf-lua").lsp_outgoing_calls()
+		end,
+		mode = { "n" },
+		desc = "Outgoing calls",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fda",
+		function()
+			require("fzf-lua").lsp_code_actions()
+		end,
+		mode = { "n" },
+		desc = "Code actions",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fdf",
+		function()
+			require("fzf-lua").lsp_finder()
+		end,
+		mode = { "n" },
+		desc = "LSP finder (all locations)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fd<C-d>",
+		function()
+			require("fzf-lua").diagnostics_document()
+		end,
+		mode = { "n" },
+		desc = "Document diagnostics",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fd<C-w>",
+		function()
+			require("fzf-lua").diagnostics_workspace()
+		end,
+		mode = { "n" },
+		desc = "Workspace diagnostics",
+		noremap = true,
+		silent = true,
+	},
+	-- fzf: Git
+	{
+		"<leader>fgf",
+		function()
+			require("fzf-lua").git_files()
+		end,
+		mode = { "n" },
+		desc = "git ls-files",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fgs",
+		function()
+			require("fzf-lua").git_status()
+		end,
+		mode = { "n" },
+		desc = "git status",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fgc",
+		function()
+			require("fzf-lua").git_bcommits()
+		end,
+		mode = { "n" },
+		desc = "git log (buffer)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fgC",
+		function()
+			require("fzf-lua").git_commits()
+		end,
+		mode = { "n" },
+		desc = "git log (project)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fgb",
+		function()
+			require("fzf-lua").git_branches()
+		end,
+		mode = { "n" },
+		desc = "git branches",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fgB",
+		function()
+			require("fzf-lua").git_blame()
+		end,
+		mode = { "n" },
+		desc = "git blame",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fgt",
+		function()
+			require("fzf-lua").git_tags()
+		end,
+		mode = { "n" },
+		desc = "git tags",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fgS",
+		function()
+			require("fzf-lua").git_stash()
+		end,
+		mode = { "n" },
+		desc = "git stash",
+		noremap = true,
+		silent = true,
+	},
+	-- Search
+	{
+		"<leader>fsb",
+		function()
+			require("fzf-lua").lgrep_curbuf()
+		end,
+		mode = { "n" },
+		desc = "Live grep current buffer",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsq",
+		function()
+			require("fzf-lua").lgrep_quickfix()
+		end,
+		mode = { "n" },
+		desc = "Live grep quickfix list",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsl",
+		function()
+			require("fzf-lua").lgrep_loclist()
+		end,
+		mode = { "n" },
+		desc = "Live grep location list",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fst",
+		function()
+			require("fzf-lua").tags_live_grep()
+		end,
+		mode = { "n" },
+		desc = "Live grep project tags",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsT",
+		function()
+			require("fzf-lua").tags_grep()
+		end,
+		mode = { "n" },
+		desc = "Grep project tags",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsg",
+		function()
+			require("fzf-lua").grep_project()
+		end,
+		mode = { "n" },
+		desc = "Grep project",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsL",
+		function()
+			require("fzf-lua").grep_last()
+		end,
+		mode = { "n" },
+		desc = "Grep (last pattern)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsw",
+		function()
+			require("fzf-lua").grep_cword()
+		end,
+		mode = { "n" },
+		desc = "Grep word under cursor",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsW",
+		function()
+			require("fzf-lua").grep_cWord()
+		end,
+		mode = { "n" },
+		desc = "Grep WORD under cursor",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsv",
+		function()
+			require("fzf-lua").grep_visual()
+		end,
+		mode = { "v" },
+		desc = "Grep visual selection",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsB",
+		function()
+			require("fzf-lua").grep_curbuf()
+		end,
+		mode = { "n" },
+		desc = "Grep current buffer",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsQ",
+		function()
+			require("fzf-lua").grep_quickfix()
+		end,
+		mode = { "n" },
+		desc = "Grep quickfix list",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fsX",
+		function()
+			require("fzf-lua").grep_loclist()
+		end,
+		mode = { "n" },
+		desc = "Grep location list",
+		noremap = true,
+		silent = true,
+	},
+	-- fzf: Tags
+	{
+		"<leader>ftt",
+		function()
+			require("fzf-lua").tags()
+		end,
+		mode = { "n" },
+		desc = "Search project tags",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>ftb",
+		function()
+			require("fzf-lua").btags()
+		end,
+		mode = { "n" },
+		desc = "Search buffer tags",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>ftw",
+		function()
+			require("fzf-lua").tag_grep_cword()
+		end,
+		mode = { "n" },
+		desc = "Tags grep word under cursor",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>ftW",
+		function()
+			require("fzf-lua").tag_grep_cWord()
+		end,
+		mode = { "n" },
+		desc = "Tags grep WORD under cursor",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>ftv",
+		function()
+			require("fzf-lua").tag_grep_visual()
+		end,
+		mode = { "v" },
+		desc = "Tags grep visual selection",
+		noremap = true,
+		silent = true,
+	},
+	-- fzf: Extra
+	{
+		"<leader>fxa",
+		function()
+			require("fzf-lua").args()
+		end,
+		mode = { "n" },
+		desc = "Fzf argument list",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fxc",
+		function()
+			require("fzf-lua").command_history()
+		end,
+		mode = { "n" },
+		desc = "Fzf command history",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fxl",
+		function()
+			require("fzf-lua").loclist()
+		end,
+		mode = { "n" },
+		desc = "Fzf location list",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fxL",
+		function()
+			require("fzf-lua").loclist_stack()
+		end,
+		mode = { "n" },
+		desc = "Fzf location stack",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fxr",
+		function()
+			require("fzf-lua").registers()
+		end,
+		mode = { "n" },
+		desc = "Fzf registers",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fxs",
+		function()
+			require("fzf-lua").search_history()
+		end,
+		mode = { "n" },
+		desc = "Fzf search history",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fxt",
+		function()
+			require("fzf-lua").treesitter()
+		end,
+		mode = { "n" },
+		desc = "Fzf treesitter symbols",
+		noremap = true,
+		silent = true,
+	},
+	-- fzf: neoclip
+	{
+		"<leader>fy",
+		function()
+			require("neoclip.fzf")()
+		end,
+		mode = { "n" },
+		desc = "Yank history (neoclip)",
+		noremap = true,
+		silent = true,
+	},
+	-- grug-far
+	{
+		"<leader>fR",
+		function()
+			require("grug-far").open()
+		end,
+		mode = { "n" },
+		desc = "Find & replace (grug-far)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>fR",
+		function()
+			require("grug-far").with_visual_selection()
+		end,
+		mode = { "v" },
+		desc = "Find & replace selection",
+		noremap = true,
+		silent = true,
+	},
+	-- KeyAnalyzer
+	{
+		"<leader>k",
+		function()
+			require("key-analyzer").show(
+				vim.fn.input("Mode (n, i, v, s): "),
+				vim.fn.input("Prefix (e.g. <leader>, <C-, etc.): ")
+			)
+		end,
+		mode = { "n" },
+		desc = "Key Analyzer",
+		noremap = true,
+		silent = true,
+	},
+	-- Treesitter
+	{ "gnd", mode = "n", desc = "Treesitter: go to definition" },
+	{ "gnD", mode = "n", desc = "Treesitter: list definitions" },
+	{ "gnO", mode = "n", desc = "Treesitter: list definitions ToC" },
+	{ "gnn", mode = "n", desc = "Treesitter: go to next usage" },
+	{ "gnp", mode = "n", desc = "Treesitter: go to previous usage" },
+	-- Trouble
+	{
+		"<leader>t<space>",
+		"<cmd>Trouble<cr>",
+		mode = { "n" },
+		desc = "Trouble menu",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>tl",
+		"<cmd>Trouble lsp toggle filter.buf=0<cr>",
+		mode = { "n" },
+		desc = "Toggle LSP (current buffer)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>tL",
+		"<cmd>Trouble lsp toggle<cr>",
+		mode = { "n" },
+		desc = "Toggle LSP",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>t<C-l>",
+		"<cmd>Trouble loclist toggle<cr>",
+		mode = { "n" },
+		desc = "Toggle loclist",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>tq",
+		"<cmd>Trouble qflist toggle<cr>",
+		mode = { "n" },
+		desc = "Toggle quickfix",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>ts",
+		"<cmd>Trouble lsp_document_symbols toggle win.position=right<cr>",
+		mode = { "n" },
+		desc = "Toggle document symbols",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>td",
+		"<cmd>Trouble lsp_definitions<cr>",
+		mode = { "n" },
+		desc = "Toggle definitions",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>tD",
+		"<cmd>Trouble lsp_declarations<cr>",
+		mode = { "n" },
+		desc = "Toggle declarations",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>t<C-d>d",
+		"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+		mode = { "n" },
+		desc = "Toggle diagnostics (buffer)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>t<C-d>D",
+		"<cmd>Trouble diagnostics toggle<cr>",
+		mode = { "n" },
+		desc = "Toggle diagnostics (workspace)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>ti",
+		"<cmd>Trouble lsp_implementations<cr>",
+		mode = { "n" },
+		desc = "Toggle implementations",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>tr",
+		"<cmd>Trouble lsp_references<cr>",
+		mode = { "n" },
+		desc = "Toggle references",
+		noremap = true,
+		silent = true,
+	},
+	-- Twilight
+	{ "<A-t>", "<cmd>Twilight<cr>", mode = { "n", "i", "v", "s" }, desc = "Toggle Twilight" },
+	-- mini.jump2d
+	{ "<cr>", mode = { "n", "v" }, desc = "Jump within visible lines (mini.jump2d)", noremap = true, silent = true },
+	-- mini.surround
+	{ "sa", mode = { "n", "v" }, desc = "Surround: add (sa{motion}{char})" },
+	{ "sd", mode = { "n" }, desc = "Surround: delete (sd{char})" },
+	{ "sr", mode = { "n" }, desc = "Surround: replace (sr{old}{new})" },
+	{ "sf", mode = { "n" }, desc = "Surround: find right" },
+	{ "sF", mode = { "n" }, desc = "Surround: find left" },
+	{ "sh", mode = { "n" }, desc = "Surround: highlight" },
+	-- Fugitive
+	{
+		"<leader>G",
+		"<cmd>Git<cr>",
+		mode = { "n" },
+		desc = "Git: fugitive status",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>Gd",
+		"<cmd>Gdiffsplit<cr>",
+		mode = { "n" },
+		desc = "Git: diff split",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>Ge",
+		"<cmd>Gedit<cr>",
+		mode = { "n" },
+		desc = "Git: open index version",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>Gl",
+		"<cmd>Git log<cr>",
+		mode = { "n" },
+		desc = "Git: log",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>Gp",
+		"<cmd>Git push<cr>",
+		mode = { "n" },
+		desc = "Git: push",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>GP",
+		"<cmd>Git pull<cr>",
+		mode = { "n" },
+		desc = "Git: pull",
+		noremap = true,
+		silent = true,
+	},
+	-- Namu
+	{
+		"<leader>Ns",
+		function()
+			vim.cmd("Namu symbols")
+		end,
+		mode = { "n" },
+		desc = "Namu: document symbols",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>Nw",
+		function()
+			vim.cmd("Namu workspace")
+		end,
+		mode = { "n" },
+		desc = "Namu: workspace symbols",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>Nd",
+		function()
+			vim.cmd("Namu diagnostics")
+		end,
+		mode = { "n" },
+		desc = "Namu: diagnostics (buffer)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>ND",
+		function()
+			vim.cmd("Namu diagnostics workspace")
+		end,
+		mode = { "n" },
+		desc = "Namu: diagnostics (workspace)",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>Nc",
+		function()
+			vim.cmd("Namu call in")
+		end,
+		mode = { "n" },
+		desc = "Namu: incoming calls",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>NC",
+		function()
+			vim.cmd("Namu call out")
+		end,
+		mode = { "n" },
+		desc = "Namu: outgoing calls",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>Nb",
+		function()
+			vim.cmd("Namu watchtower")
+		end,
+		mode = { "n" },
+		desc = "Namu: symbols in all buffers",
+		noremap = true,
+		silent = true,
+	},
+	-- sniprun
+	{
+		"<leader>rr",
+		function()
+			require("sniprun").run()
+		end,
+		mode = { "n" },
+		desc = "SnipRun: run line",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>rr",
+		function()
+			require("sniprun").run()
+		end,
+		mode = { "v" },
+		desc = "SnipRun: run selection",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>rc",
+		function()
+			require("sniprun").close()
+		end,
+		mode = { "n" },
+		desc = "SnipRun: close output",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>rR",
+		function()
+			require("sniprun").reset()
+		end,
+		mode = { "n" },
+		desc = "SnipRun: reset",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>ri",
+		function()
+			require("sniprun").info()
+		end,
+		mode = { "n" },
+		desc = "SnipRun: info",
+		noremap = true,
+		silent = true,
+	},
+	-- Overseer
+	{
+		"<leader>oo",
+		"<cmd>OverseerToggle<cr>",
+		mode = { "n" },
+		desc = "Overseer: toggle panel",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>or",
+		"<cmd>OverseerRun<cr>",
+		mode = { "n" },
+		desc = "Overseer: run task",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>oq",
+		"<cmd>OverseerQuickAction<cr>",
+		mode = { "n" },
+		desc = "Overseer: quick action",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>oa",
+		"<cmd>OverseerTaskAction<cr>",
+		mode = { "n" },
+		desc = "Overseer: task action",
+		noremap = true,
+		silent = true,
+	},
+	{
+		"<leader>oc",
+		"<cmd>OverseerClose<cr>",
+		mode = { "n" },
+		desc = "Overseer: close panel",
+		noremap = true,
+		silent = true,
+	},
+})
