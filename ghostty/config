@@ -1,7 +1,0 @@
-theme = Deep
-font-family = JetBrainsMono Nerd Font
-background = #000000
-background-opacity = 0.5
-window-colorspace = display-p3
-keybind = global:ctrl+grave_accent=toggle_quick_terminal
-quick-terminal-animation-duration = 0.0
