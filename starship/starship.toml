@@ -699,19 +699,19 @@ Ubuntu = " 󰕈 "
 SUSE = "  "
 Raspbian = " 󰐿 "
 Mint = " 󰣭 "
-Macos = " 󰀵"
+Macos = " 󰀵 "
 Manjaro = "  "
 Linux = " 󰌽 "
 Gentoo = " 󰣨 "
 Fedora = " 󰣛 "
 Alpine = "  "
-Android = " "
+Android = "  "
 Arch = " 󰣇 "
 Artix = " 󰣇 "
 CentOS = "  "
 Debian = " 󰣚 "
-#FF0000hat = " 󱄛 "
-#FF0000HatEnterprise = " 󱄛 "
+Redhat = " 󱄛 "
+RedHatEnterprise = " 󱄛 "
 Unknown = " ❓ "
 
 [package]
@@ -816,7 +816,7 @@ version_format = "v${raw}"
 symbol = "🔺 "
 style = "bg:#EE1111 fg:#FFFFFF"
 disabled = false
-detect_extensions = ["#FF0000", "#FF0000s"]
+detect_extensions = ["red", "reds"]
 detect_files = []
 detect_folders = []
 [rlang]
