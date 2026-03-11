@@ -21,6 +21,7 @@ $os\
 $username\
 $sudo\
 [🭨](bg:#444444 fg:#777777)\
+$shell\
 $cmd_duration\
 $character"""
 continuation_prompt = "[∙](bright-black) "
@@ -49,7 +50,7 @@ force_display = false
 format = "[](bg:#008AD7 fg:white)[on $symbol( $subscription)]($style)[](bg:#008AD7 fg:white)"
 symbol = ""
 style = "bg:#008AD7 fg:bold white"
-disabled = true
+disabled = false
 
 [azure.subscription_aliases]
 
@@ -81,11 +82,7 @@ symbol = ""
 style = "bg:#0E5DF5 fg:#5FDCFF"
 disabled = false
 detect_extensions = []
-detect_files = [
-    "buf.yaml",
-    "buf.gen.yaml",
-    "buf.work.yaml",
-]
+detect_files = ["buf.yaml", "buf.gen.yaml", "buf.work.yaml"]
 detect_folders = []
 
 [bun]
@@ -95,10 +92,7 @@ symbol = ""
 style = "bg:#FBF0DF fg:#FEBBD0"
 disabled = false
 detect_extensions = []
-detect_files = [
-    "bun.lockb",
-    "bunfig.toml",
-]
+detect_files = ["bun.lockb", "bun.lock", "bunfig.toml"]
 detect_folders = []
 
 [c]
@@ -107,26 +101,10 @@ version_format = "v${raw}"
 style = "bg:#659AD2 fg:white"
 symbol = ""
 disabled = false
-detect_extensions = [
-    "c",
-    "h",
-]
+detect_extensions = ["c", "h"]
 detect_files = []
 detect_folders = []
-commands = [
-    [
-		"cc",
-		"--version",
-	],
-    [
-		"gcc",
-		"--version",
-	],
-    [
-		"clang",
-		"--version",
-	],
-]
+commands = [["cc", "--version"], ["gcc", "--version"], ["clang", "--version"]]
 
 
 [cpp]
@@ -152,10 +130,7 @@ symbol = "[](bg:#0068C7 fg:#3DAE2B)"
 style = "bg:#0068C7 fg:#F32735"
 disabled = false
 detect_extensions = []
-detect_files = [
-    "CMakeLists.txt",
-    "CMakeCache.txt",
-]
+detect_files = ["CMakeLists.txt", "CMakeCache.txt"]
 detect_folders = []
 
 [cmd_duration]
@@ -173,12 +148,7 @@ version_format = "v${raw}"
 symbol = "⚙"
 style = "bg:#333333 fg:green"
 disabled = false
-detect_extensions = [
-    "cbl",
-    "cob",
-    "CBL",
-    "COB",
-]
+detect_extensions = ["cbl", "cob", "CBL", "COB"]
 detect_files = []
 detect_folders = []
 
@@ -223,11 +193,7 @@ symbol = ""
 style = "bg:#2CB7F6 fg:#04599C"
 disabled = false
 detect_extensions = ["dart"]
-detect_files = [
-    "pubspec.yaml",
-    "pubspec.yml",
-    "pubspec.lock",
-]
+detect_files = ["pubspec.yaml", "pubspec.yml", "pubspec.lock"]
 detect_folders = [".dart_tool"]
 
 [deno]
@@ -238,12 +204,12 @@ style = "bg:black fg:white"
 disabled = false
 detect_extensions = []
 detect_files = [
-    "deno.json",
-    "deno.jsonc",
-    "mod.ts",
-    "deps.ts",
-    "mod.js",
-    "deps.js",
+	"deno.json",
+	"deno.jsonc",
+	"mod.ts",
+	"deps.ts",
+	"mod.js",
+	"deps.js",
 ]
 detect_folders = []
 
@@ -283,11 +249,7 @@ format = "[](bg:#1D63ED fg:white)[$symbol $context]($style)[](bg:#1D63ED f
 only_with_files = true
 disabled = false
 detect_extensions = []
-detect_files = [
-    "docker-compose.yml",
-    "docker-compose.yaml",
-    "Dockerfile",
-]
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
 detect_folders = []
 
 [dotnet]
@@ -297,17 +259,13 @@ symbol = ""
 style = "bg:#512BD4 fg:white"
 heuristic = true
 disabled = false
-detect_extensions = [
-    "csproj",
-    "fsproj",
-    "xproj",
-]
+detect_extensions = ["csproj", "fsproj", "xproj"]
 detect_files = [
-    "global.json",
-    "project.json",
-    "Directory.Build.props",
-    "Directory.Build.targets",
-    "Packages.props",
+	"global.json",
+	"project.json",
+	"Directory.Build.props",
+	"Directory.Build.targets",
+	"Packages.props",
 ]
 detect_folders = []
 
@@ -328,11 +286,7 @@ symbol = ""
 style = "bg:#1293D8 fg:white"
 disabled = false
 detect_extensions = ["elm"]
-detect_files = [
-    "elm.json",
-    "elm-package.json",
-    ".elm-version",
-]
+detect_files = ["elm.json", "elm-package.json", ".elm-version"]
 detect_folders = ["elm-stuff"]
 
 [env_var]
@@ -344,18 +298,15 @@ symbol = ""
 style = "bg:#A90432 fg:white"
 disabled = false
 detect_extensions = []
-detect_files = [
-    "rebar.config",
-    "erlang.mk",
-]
+detect_files = ["rebar.config", "erlang.mk"]
 detect_folders = []
 
 [fennel]
-format = "[](bg:#FFF3D7 fg:white)[$symbol( $version)]($style)(bg:#FFF3D7 fg:white)"
+format = "[](bg:#FFF3D7 fg:white)[$symbol( $version)]($style)(bg:#FFF3D7 fg:white)"
 version_format = "v${raw}"
-symbol = ""
+symbol = ""
 style = "bg:#FFF3D7 fg:black"
-disabled = true
+disabled = false
 detect_extensions = ["fnl"]
 detect_files = []
 detect_folders = []
@@ -363,7 +314,17 @@ detect_folders = []
 [fill]
 style = "bold black"
 symbol = "."
-disabled = true
+disabled = false
+
+[fortran]
+format = "[](bg:#4E3C8C fg:white)[$symbol( $version)]($style)[](bg:#4E3C8C fg:white)"
+version_format = "v${raw}"
+symbol = "󱗆"
+style = "bg:#4E3C8C fg:white"
+disabled = false
+detect_extensions = ["f", "F", "f90", "f95", "for", "fpp"]
+detect_files = []
+detect_folders = []
 
 [fossil_branch]
 format = "[](bg:#548294 fg:white)[on $symbol$branch]($style) "
@@ -374,7 +335,7 @@ truncation_symbol = "…"
 disabled = false
 
 [fossil_metrics]
-format = "([ ](bg:#548294)([+$added]($added_style) )([-$deleted]($deleted_style))[](bg:#548294 fg:white)"
+format = "([ ](bg:#548294)([+$added]($added_style) )([-$deleted]($deleted_style)))[](bg:#548294 fg:white)"
 added_style = "bg:#548294 fg:bold bright-green"
 deleted_style = "bg:#548294 fg:bold #990000"
 only_nonzero_diffs = true
@@ -469,13 +430,13 @@ disabled = false
 not_capable_style = "bold red"
 detect_extensions = ["go"]
 detect_files = [
-    "go.mod",
-    "go.sum",
-    "go.work",
-    "glide.yaml",
-    "Gopkg.yml",
-    "Gopkg.lock",
-    ".go-version",
+	"go.mod",
+	"go.sum",
+	"go.work",
+	"glide.yaml",
+	"Gopkg.yml",
+	"Gopkg.lock",
+	".go-version",
 ]
 detect_folders = ["Godeps"]
 
@@ -486,10 +447,7 @@ symbol = ""
 style = "bg:#02303A fg:white"
 disabled = false
 recursive = false
-detect_extensions = [
-    "gradle",
-    "gradle.kts",
-]
+detect_extensions = ["gradle", "gradle.kts"]
 detect_files = []
 detect_folders = ["gradle"]
 
@@ -505,15 +463,8 @@ version_format = "v${raw}"
 symbol = ""
 style = "bg:#644A8F fg:white"
 disabled = false
-detect_extensions = [
-    "hs",
-    "cabal",
-    "hs-boot",
-]
-detect_files = [
-    "stack.yaml",
-    "cabal.project",
-]
+detect_extensions = ["hs", "cabal", "hs-boot"]
+detect_files = ["stack.yaml", "cabal.project"]
 detect_folders = []
 
 [haxe]
@@ -522,19 +473,9 @@ version_format = "v${raw}"
 symbol = ""
 style = "bg:#F6880A fg:black"
 disabled = false
-detect_extensions = [
-    "hx",
-    "hxml",
-]
-detect_files = [
-    "haxelib.json",
-    "hxformat.json",
-    ".haxerc",
-]
-detect_folders = [
-    ".haxelib",
-    "haxe_libraries",
-]
+detect_extensions = ["hx", "hxml"]
+detect_files = ["haxelib.json", "hxformat.json", ".haxerc"]
+detect_folders = [".haxelib", "haxe_libraries"]
 
 [helm]
 format = "[](bg:#0F1689 fg:white)[$symbol( $version)]($style)[](bg:#0F1689 fg:white)"
@@ -543,19 +484,21 @@ symbol = ""
 style = "bg:#0F1689 fg:white"
 disabled = false
 detect_extensions = []
-detect_files = [
-    "helmfile.yaml",
-    "Chart.yaml",
-]
+detect_files = ["helmfile.yaml", "Chart.yaml"]
 detect_folders = []
 
 [hg_branch]
-format = "[](bg:#F#9A9A9A fg:white)[on $symbol$branch(:$topic)]($style)[](bg:#F#9A9A9A fg:white)"
-symbol = " "
-style = "bg:#F#9A9A9A fg:white"
+format = "[](bg:#9A9A9A fg:white)[on $symbol$branch(:$topic)]($style)"
+symbol = " "
+style = "bg:#9A9A9A fg:white"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
-disabled = true
+disabled = false
+
+[hg_state]
+style = "bg:#9A9A9A fg:yellow"
+format = '\([ $state( $progress_current/$progress_total)]($style)\) [](bg:#9A9A9A fg:white)'
+disabled = false
 
 [hostname]
 ssh_only = true
@@ -567,78 +510,60 @@ style = "bg:black fg:white"
 disabled = false
 
 [java]
-disabled = false
-format = "[$symbol($version )]($style)"
+format = "(bg:#ED8B00 fg:white)[$symbol( $version)]($style)(bg:#ED8B00 fg:white)"
 version_format = "v${raw}"
-style = "red dimmed"
 symbol = ""
-detect_extensions = [
-    "java",
-    "class",
-    "jar",
-    "gradle",
-    "clj",
-    "cljc",
-]
+style = "bg:#ED8B00 fg:bold black"
+disabled = false
+detect_extensions = ["java", "class", "jar", "gradle", "clj", "cljc"]
 detect_files = [
-    "pom.xml",
-    "build.gradle.kts",
-    "build.sbt",
-    ".java-version",
-    "deps.edn",
-    "project.clj",
-    "build.boot",
-    ".sdkmanrc",
+	"pom.xml",
+	"build.gradle.kts",
+	"build.sbt",
+	".java-version",
+	"deps.edn",
+	"project.clj",
+	"build.boot",
+	".sdkmanrc",
 ]
 detect_folders = []
-
 [jobs]
 threshold = 1
 symbol_threshold = 1
 number_threshold = 2
-format = "[$symbol$number]($style) "
+format = "[ $symbol$number]($style)"
 symbol = "✦"
-style = "bold blue"
-disabled = false
-
+style = "bg:#555555 fg:white"
+disabled = true
 [julia]
-format = "[$symbol($version )]($style)"
+format = "(bg:#9558B2 fg:white)[$symbol( $version)]($style)(bg:#9558B2 fg:white)"
 version_format = "v${raw}"
-symbol = ""
-style = "bold purple"
+symbol = ""
+style = "bg:#9558B2 fg:white"
 disabled = false
 detect_extensions = ["jl"]
-detect_files = [
-    "Project.toml",
-    "Manifest.toml",
-]
+detect_files = ["Project.toml", "Manifest.toml"]
 detect_folders = []
-
 [kotlin]
-format = "[$symbol($version )]($style)"
+format = "(bg:#7F52FF fg:white)[$symbol( $version)]($style)(bg:#7F52FF fg:white)"
 version_format = "v${raw}"
-symbol = ""
-style = "bold blue"
+symbol = ""
+style = "bg:#7F52FF fg:white"
 kotlin_binary = "kotlin"
 disabled = false
-detect_extensions = [
-    "kt",
-    "kts",
-]
+detect_extensions = ["kt", "kts"]
 detect_files = []
 detect_folders = []
-
 [kubernetes]
-symbol = ""
-format = '[$symbol$context( \($namespace\))]($style) in '
-style = "cyan bold"
-disabled = true
+symbol = ""
+format = '(bg:#326CE5 fg:white)[$symbol$context( \($namespace\))]($style)(bg:#326CE5 fg:white)'
+style = "bg:#326CE5 fg:white"
+disabled = false
 detect_extensions = []
 detect_files = []
 detect_folders = []
 detect_env_vars = []
 contexts = []
-
 [kubernetes.context_aliases]
 
 [kubernetes.user_aliases]
@@ -648,10 +573,9 @@ disabled = false
 
 [localip]
 ssh_only = true
-format = "[$localipv4]($style) "
-style = "yellow bold"
+format = "[ $localipv4]($style)"
+style = "bg:#555555 fg:white"
 disabled = true
-
 [lua]
 format = "[](bg:#010180 fg:white)[$symbol($version)]($style)[](bg:#010180 fg:white)"
 version_format = "v${raw}"
@@ -665,52 +589,57 @@ detect_folders = ["lua"]
 
 [memory_usage]
 threshold = 75
-format = "$symbol[$ram( | $swap)]($style) "
-style = "white bold dimmed"
-symbol = "🐏 "
+format = "[ $symbol$ram( | $swap)]($style)"
+style = "bg:#333333 fg:white"
+symbol = "󰍛 "
 disabled = true
-
 [meson]
 truncation_length = 4294967295
 truncation_symbol = "…"
-format = "[$symbol$project]($style) "
+format = "(bg:#2D4A60 fg:white)[$symbol$project]($style)(bg:#2D4A60 fg:white)"
 symbol = "⬢ "
-style = "blue bold"
+style = "bg:#2D4A60 fg:white"
+disabled = false
+[mise]
+format = "[](bg:#2D5D7B fg:white)[$symbol( $version)]($style)[](bg:#2D5D7B fg:white)"
+symbol = "mise"
+style = "bg:#2D5D7B fg:white"
 disabled = false
 
 [mojo]
+format = "(bg:#FF6D00 fg:white)[$symbol( $version)]($style)(bg:#FF6D00 fg:white)"
 symbol = "🔥"
-
+style = "bg:#FF6D00 fg:bold black"
+disabled = false
 [nats]
-format = "[$symbol($name )]($style)"
+format = "[ $symbol$name]($style)"
 symbol = "✉️ "
-style = "bold purple"
+style = "bg:#27AAE1 fg:white"
+disabled = true
+[netns]
+format = "[ $symbol$name]($style)"
+symbol = "󰅛 "
+style = "bg:#3B4859 fg:white"
 disabled = true
 
 [nim]
-format = "[$symbol($version )]($style)"
+format = "(bg:#FFE953 fg:white)[$symbol( $version)]($style)(bg:#FFE953 fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "yellow bold"
+style = "bg:#FFE953 fg:bold black"
 disabled = false
-detect_extensions = [
-    "nim",
-    "nims",
-    "nimble",
-]
+detect_extensions = ["nim", "nims", "nimble"]
 detect_files = ["nim.cfg"]
 detect_folders = []
-
 [nix_shell]
-format = '[$symbol$state( \($name\))]($style) '
+format = '(bg:#5277C3 fg:white)[$symbol$state( \($name\))]($style)(bg:#5277C3 fg:white)'
 symbol = "󱄅"
-style = "bold blue"
+style = "bg:#5277C3 fg:white"
 impure_msg = "impure"
 pure_msg = "pure"
 unknown_msg = ""
 disabled = false
 heuristic = false
-
 [nodejs]
 format = '[](bg:#3C873A fg:white)[${symbol}( ${version})]($style)[](bg:#3C873A fg:white)'
 # format = "[$symbol($version )]($style)"
@@ -719,75 +648,45 @@ symbol = ""
 style = "bg:#3C873A fg:bold #303030"
 disabled = false
 not_capable_style = "bold red"
-detect_extensions = [
-    "js",
-    "mjs",
-    "cjs",
-    "ts",
-    "mts",
-    "cts",
-]
-detect_files = [
-    "package.json",
-    ".node-version",
-    ".nvmrc",
-]
+detect_extensions = ["js", "mjs", "cjs", "ts", "mts", "cts"]
+detect_files = ["package.json", ".node-version", ".nvmrc"]
 detect_folders = ["node_modules"]
 
 [ocaml]
-format = '[$symbol($version )(\($switch_indicator$switch_name\) )]($style)'
+format = '(bg:#EF7A08 fg:white)[$symbol( $version)(\($switch_indicator$switch_name\))]($style)(bg:#EF7A08 fg:white)'
 version_format = "v${raw}"
 global_switch_indicator = ""
 local_switch_indicator = "*"
 symbol = ""
-style = "bold yellow"
+style = "bg:#EF7A08 fg:bold black"
 disabled = false
-detect_extensions = [
-    "opam",
-    "ml",
-    "mli",
-    "re",
-    "rei",
-]
-detect_files = [
-    "dune",
-    "dune-project",
-    "jbuild",
-    "jbuild-ignore",
-    ".merlin",
-]
-detect_folders = [
-    "_opam",
-    "esy.lock",
-]
-
+detect_extensions = ["opam", "ml", "mli", "re", "rei"]
+detect_files = ["dune", "dune-project", "jbuild", "jbuild-ignore", ".merlin"]
+detect_folders = ["_opam", "esy.lock"]
 
 [odin]
-format = "[$symbol($version )]($style)"
+format = "(bg:#001A72 fg:white)[$symbol( $version)]($style)(bg:#001A72 fg:white)"
 show_commit = false
 symbol = "Ø "
-style = "bold bright-blue"
-disabled = true
+style = "bg:#001A72 fg:white"
+disabled = false
 detect_extensions = ["odin"]
 detect_files = []
 detect_folders = []
-
 [opa]
-format = "[$symbol($version )]($style)"
+format = "(bg:#0089D2 fg:white)[$symbol( $version)]($style)(bg:#0089D2 fg:white)"
 version_format = "v${raw}"
 symbol = "🪖  "
-style = "bold blue"
+style = "bg:#0089D2 fg:white"
 disabled = false
 detect_extensions = ["rego"]
 detect_files = []
 detect_folders = []
-
 [openstack]
-format = 'on [$symbol$cloud(\($project\))]($style) '
+format = '(bg:#ED1944 fg:white)[$symbol$cloud(\($project\))]($style)(bg:#ED1944 fg:white)'
 symbol = ""
-style = "bold yellow"
+style = "bg:#ED1944 fg:white"
 disabled = false
-
 [os]
 # format = "[](bg:#777777 fg:white)[$symbol]($style)[](bg:#777777 fg:white)"
 format = "[$symbol]($style)"
@@ -824,74 +723,58 @@ disabled = false
 version_format = "v${raw}"
 
 [perl]
-format = "[$symbol($version )]($style)"
+format = "(bg:#39457E fg:white)[$symbol( $version)]($style)(bg:#39457E fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "149 bold"
+style = "bg:#39457E fg:white"
 disabled = false
-detect_extensions = [
-    "pl",
-    "pm",
-    "pod",
-]
+detect_extensions = ["pl", "pm", "pod"]
 detect_files = [
-    "Makefile.PL",
-    "Build.PL",
-    "cpanfile",
-    "cpanfile.snapshot",
-    "META.json",
-    "META.yml",
-    ".perl-version",
+	"Makefile.PL",
+	"Build.PL",
+	"cpanfile",
+	"cpanfile.snapshot",
+	"META.json",
+	"META.yml",
+	".perl-version",
 ]
 detect_folders = []
-
 [php]
-format = "[$symbol($version )]($style)"
+format = "(bg:#777BB4 fg:white)[$symbol( $version)]($style)(bg:#777BB4 fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "147 bold"
+style = "bg:#777BB4 fg:white"
 disabled = false
 detect_extensions = ["php"]
-detect_files = [
-    "composer.json",
-    ".php-version",
-]
+detect_files = ["composer.json", ".php-version"]
 detect_folders = []
-
 [pijul_channel]
 symbol = " "
-style = "bold purple"
-format = "on [$symbol$channel]($style) "
+style = "bg:#A0522D fg:white"
+format = "(bg:#A0522D fg:white)[$symbol$channel]($style)(bg:#A0522D fg:white)"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
-disabled = true
-
+disabled = false
 [pulumi]
-format = "[$symbol($username@)$stack]($style) "
+format = "(bg:#7B3AE4 fg:white)[$symbol( $username@)$stack]($style)(bg:#7B3AE4 fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "bold 5"
+style = "bg:#7B3AE4 fg:white"
 disabled = false
 search_upwards = true
-
 [purescript]
-format = "[$symbol($version )]($style)"
+format = "(bg:#1D222D fg:white)[$symbol( $version)]($style)(bg:#1D222D fg:white)"
 version_format = "v${raw}"
 symbol = " "
-style = "bold white"
+style = "bg:#1D222D fg:white"
 disabled = false
 detect_extensions = ["purs"]
 detect_files = ["spago.dhall"]
 detect_folders = []
-
 [python]
 pyenv_version_name = false
 pyenv_prefix = "pyenv "
-python_binary = [
-    "python",
-    "python3",
-    "python2",
-]
+python_binary = ["python", "python3", "python2"]
 format = '[](bg:#4B8BBE fg:white)[${symbol}( ${pyenv_prefix})( ${version})( \($virtualenv\))]($style)[](bg:#4B8BBE fg:white)'
 version_format = "v${raw}"
 style = "bg:#4B8BBE fg:#FFD73B"
@@ -899,88 +782,62 @@ symbol = ""
 disabled = false
 detect_extensions = ["py"]
 detect_files = [
-    "requirements.txt",
-    ".python-version",
-    "pyproject.toml",
-    "Pipfile",
-    "tox.ini",
-    "setup.py",
-    "__init__.py",
+	"requirements.txt",
+	".python-version",
+	"pyproject.toml",
+	"Pipfile",
+	"tox.ini",
+	"setup.py",
+	"__init__.py",
 ]
 detect_folders = []
 
 [quarto]
-format = "[$symbol($version )]($style)"
+format = "(bg:#75AADB fg:white)[$symbol( $version)]($style)(bg:#75AADB fg:white)"
 version_format = "v${raw}"
 symbol = "⨁ "
-style = "bold #75AADB"
+style = "bg:#75AADB fg:bold black"
 disabled = false
 detect_extensions = ["qmd"]
 detect_files = ["_quarto.yml"]
 detect_folders = []
-
 [raku]
-format = "[$symbol($version-$vm_version )]($style)"
+format = "(bg:#149F8E fg:white)[$symbol( $version-$vm_version)]($style)(bg:#149F8E fg:white)"
 version_format = "${raw}"
 symbol = "🦋 "
-style = "149 bold"
+style = "bg:#149F8E fg:white"
 disabled = false
-detect_extensions = [
-    "p6",
-    "pm6",
-    "pod6",
-    "raku",
-    "rakumod",
-]
+detect_extensions = ["p6", "pm6", "pod6", "raku", "rakumod"]
 detect_files = ["META6.json"]
 detect_folders = []
-
 [red]
-format = "[$symbol($version )]($style)"
+format = "(bg:#EE1111 fg:white)[$symbol( $version)]($style)(bg:#EE1111 fg:white)"
 version_format = "v${raw}"
 symbol = "🔺 "
-style = "red bold"
+style = "bg:#EE1111 fg:white"
 disabled = false
-detect_extensions = [
-    "red",
-    "reds",
-]
+detect_extensions = ["red", "reds"]
 detect_files = []
 detect_folders = []
-
 [rlang]
-format = "[$symbol($version )]($style)"
+format = "(bg:#2266B8 fg:white)[$symbol( $version)]($style)(bg:#2266B8 fg:white)"
 version_format = "v${raw}"
-style = "blue bold"
+style = "bg:#2266B8 fg:white"
 symbol = "📐 "
 disabled = false
-detect_extensions = [
-    "R",
-    "Rd",
-    "Rmd",
-    "Rproj",
-    "Rsx",
-]
+detect_extensions = ["R", "Rd", "Rmd", "Rproj", "Rsx"]
 detect_files = ["DESCRIPTION"]
 detect_folders = [".Rproj.user"]
-
 [ruby]
-format = "[$symbol($version )]($style)"
+format = "(bg:#CC342D fg:white)[$symbol( $version)]($style)(bg:#CC342D fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "bold red"
+style = "bg:#CC342D fg:white"
 disabled = false
 detect_extensions = ["rb"]
-detect_files = [
-    "Gemfile",
-    ".ruby-version",
-]
+detect_files = ["Gemfile", ".ruby-version"]
 detect_folders = []
-detect_variables = [
-    "RUBY_VERSION",
-    "RBENV_VERSION",
-]
-
+detect_variables = ["RUBY_VERSION", "RBENV_VERSION"]
 [rust]
 format = "[](bg:#D34516 fg:white)[$symbol( $version)]($style)[](bg:#D34516 fg:white)"
 version_format = "v${raw}"
@@ -992,87 +849,69 @@ detect_files = ["Cargo.toml"]
 detect_folders = []
 
 [scala]
-format = "[$symbol($version )]($style)"
+format = "(bg:#E32922 fg:white)[$symbol( $version)]($style)(bg:#E32922 fg:white)"
 version_format = "v${raw}"
 disabled = false
-style = "red bold"
+style = "bg:#E32922 fg:white"
 symbol = ""
-detect_extensions = [
-    "sbt",
-    "scala",
-]
-detect_files = [
-    ".scalaenv",
-    ".sbtenv",
-    "build.sbt",
-]
+detect_extensions = ["sbt", "scala"]
+detect_files = [".scalaenv", ".sbtenv", "build.sbt"]
 detect_folders = [".metals"]
-
 [shell]
-format = "[$indicator]($style) "
-bash_indicator = "bsh"
-fish_indicator = "fsh"
-zsh_indicator = "zsh"
-powershell_indicator = "psh"
-ion_indicator = "ion"
-elvish_indicator = "esh"
-tcsh_indicator = "tsh"
-nu_indicator = "nu"
-xonsh_indicator = "xsh"
-cmd_indicator = "cmd"
-unknown_indicator = ""
-style = "white bold"
-disabled = true
+format = "[🭬](bg:black fg:#777777)[$indicator]($style)[🭨](bg:black fg:#777777)"
 
+bash_indicator = "#!"
+fish_indicator = " "
+zsh_indicator = "%_"
+powershell_indicator = ">_"
+cmd_indicator = " "
+unknown_indicator = ""
+style = "bg:black fg:bold white"
+disabled = false
 [shlvl]
 threshold = 2
-format = "[$symbol$shlvl]($style) "
+format = "[ $symbol$shlvl]($style)"
 symbol = "↕️  "
 repeat = false
 repeat_offset = 0
-style = "bold yellow"
+style = "bg:#444444 fg:white"
 disabled = true
-
 [singularity]
 symbol = ""
-format = '[$symbol\[$env\]]($style) '
-style = "blue bold dimmed"
-disabled = false
-
+format = '[ $symbol\[$env\]]($style)'
+style = "bg:#3F0061 fg:white"
+disabled = true
 [solidity]
-format = "[$symbol($version)]($style)"
+format = "(bg:#2B247C fg:white)[$symbol( $version)]($style)(bg:#2B247C fg:white)"
 version_format = "v${major}.${minor}.${patch}"
 disabled = false
-style = "bold blue"
+style = "bg:#2B247C fg:white"
 symbol = ""
 compiler = ["solc"]
 detect_extensions = ["sol"]
 detect_files = []
 detect_folders = []
-
 [spack]
 truncation_length = 1
-format = "[$symbol$environment]($style) "
+format = "(bg:#222244 fg:white)[$symbol$environment]($style)(bg:#222244 fg:white)"
 symbol = ""
-style = "blue bold"
+style = "bg:#222244 fg:white"
 disabled = false
-
 [status]
-format = "[$symbol$status]($style) "
+format = "[ $symbol$status]($style)"
 symbol = "❌"
 success_symbol = ""
 not_executable_symbol = "🚫"
 not_found_symbol = "🔍"
 sigint_symbol = "🧱"
 signal_symbol = "⚡"
-style = "bold red"
+style = "bg:#CC0000 fg:white"
 map_symbol = false
 recognize_signal_code = true
 pipestatus = false
 pipestatus_separator = "|"
 pipestatus_format = '\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)'
 disabled = true
-
 [sudo]
 format = "[ $symbol]($style)"
 symbol = "🦸"
@@ -1081,29 +920,23 @@ allow_windows = false
 disabled = false
 
 [swift]
-format = "[$symbol($version )]($style)"
+format = "(bg:#F05138 fg:white)[$symbol( $version)]($style)(bg:#F05138 fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "bold 202"
+style = "bg:#F05138 fg:white"
 disabled = false
 detect_extensions = ["swift"]
 detect_files = ["Package.swift"]
 detect_folders = []
-
 [terraform]
-format = "[$symbol$workspace]($style) "
+format = "(bg:#7B42BC fg:white)[$symbol$workspace]($style)(bg:#7B42BC fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "bold 105"
+style = "bg:#7B42BC fg:white"
 disabled = false
-detect_extensions = [
-    "tf",
-    "tfplan",
-    "tfstate",
-]
+detect_extensions = ["tf", "tfplan", "tfstate"]
 detect_files = []
 detect_folders = [".terraform"]
-
 [time]
 format = "[$time]($style)[](bg:#AAAAAA fg:white)"
 style = "bg:#AAAAAA fg:black"
@@ -1113,19 +946,18 @@ utc_time_offset = "local"
 time_range = "-"
 
 [typst]
-format = "[$symbol($version )]($style)"
+format = "(bg:#0093A7 fg:white)[$symbol( $version)]($style)(bg:#0093A7 fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "bold #0093A7"
+style = "bg:#0093A7 fg:white"
 disabled = false
 detect_extensions = ["typ"]
 detect_files = ["template.typ"]
 detect_folders = []
-
 [username]
 detect_env_vars = []
 # format = "[$user]($style) in "
-format = "[](bg:#444444 fg:#777777)[ $user ]($style)"
+format = "[](bg:#444444 fg:#777777)[ $user]($style)"
 style_root = "bg:#444444 fg:red"
 style_user = "bg:#444444 fg:white"
 show_always = true
@@ -1134,44 +966,35 @@ disabled = false
 [username.aliases]
 
 [vagrant]
-format = "[$symbol($version )]($style)"
+format = "(bg:#1868F2 fg:white)[$symbol( $version)]($style)(bg:#1868F2 fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "cyan bold"
+style = "bg:#1868F2 fg:white"
 disabled = false
 detect_extensions = []
 detect_files = ["Vagrantfile"]
 detect_folders = []
-
 [vcsh]
 symbol = ""
-style = "bold yellow"
-format = "vcsh [$symbol$repo]($style) "
+style = "bg:#CC8800 fg:white"
+format = "(bg:#CC8800 fg:white)[$symbol$repo]($style)(bg:#CC8800 fg:white)"
 disabled = false
-
 [vlang]
-format = "[$symbol($version )]($style)"
+format = "(bg:#5D87BF fg:white)[$symbol( $version)]($style)(bg:#5D87BF fg:white)"
 version_format = "v${raw}"
 symbol = "V "
-style = "blue bold"
+style = "bg:#5D87BF fg:white"
 disabled = false
 detect_extensions = ["v"]
-detect_files = [
-    "v.mod",
-    "vpkg.json",
-    ".vpkg-lock.json",
-]
+detect_files = ["v.mod", "vpkg.json", ".vpkg-lock.json"]
 detect_folders = []
-
 [zig]
-format = "[$symbol($version )]($style)"
+format = "(bg:#F7A41D fg:white)[$symbol( $version)]($style)(bg:#F7A41D fg:white)"
 version_format = "v${raw}"
 symbol = ""
-style = "bold yellow"
+style = "bg:#F7A41D fg:bold black"
 disabled = false
 detect_extensions = ["zig"]
 detect_files = []
 detect_folders = []
-
 [custom]
-
