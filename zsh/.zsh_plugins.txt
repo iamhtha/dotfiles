@@ -1,0 +1,15 @@
+# oh-my-zsh compatibility layer (must be first)
+getantidote/use-omz
+
+# clipboard.zsh must come before any plugin that calls clipcopy/clippaste
+ohmyzsh/ohmyzsh path:lib/clipboard.zsh
+ohmyzsh/ohmyzsh path:plugins/sudo
+ohmyzsh/ohmyzsh path:plugins/copyfile
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+ohmyzsh/ohmyzsh path:plugins/copypath
+ohmyzsh/ohmyzsh path:plugins/dirhistory
+jeffreytse/zsh-vi-mode
+zsh-users/zsh-autosuggestions
+
+# zsh-syntax-highlighting must be last
+zsh-users/zsh-syntax-highlighting
