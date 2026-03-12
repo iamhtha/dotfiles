@@ -2,7 +2,7 @@ ZVM_VI_SURROUND_BINDKEY=s-prefix
 ZVM_VI_INSERT_ESCAPE_BINDKEY="jk"
 
 # Antidote
-_antidote_dir="${ZDOTDIR:-~}/.antidote"
+_antidote_dir="${ZDOTDIR:-$HOME}/.antidote"
 if [[ ! -d "$_antidote_dir" ]]; then
   if command -v git &>/dev/null; then
     echo "Bootstrapping antidote plugin manager..."
