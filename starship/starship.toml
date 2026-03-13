@@ -20,7 +20,7 @@ $line_break\
 $os\
 $username\
 $sudo\
-[🭨](bg:#444444 fg:#777777)\
+[](bg:#444444 fg:#777777)\
 $shell\
 $cmd_duration\
 $character"""
@@ -115,12 +115,12 @@ disabled = false
 
 [character]
 format = "$symbol "
-success_symbol = "[🭬](bg:#00FF00 fg:bold #777777)[✔](bg:#00FF00 fg:bold #FFFFFF)[](#00FF00)"
-error_symbol = "[🭬](bg:#FF0000 fg:bold #777777)[✘](bg:#FF0000 fg:bold #FFFFFF)[](#FF0000)"
-vimcmd_symbol = "[🭬](bg:#00FF00 fg:bold #777777)[](bg:#00FF00 fg:bold #FFFFFF)[](#00FF00)"
-vimcmd_visual_symbol = "[🭬](bg:#FFFF00 fg:bold #777777)[](bg:#FFFF00 fg:bold #FFFFFF)[](#FFFF00)"
-vimcmd_replace_symbol = "[🭬](bg:purpe fg:bold #777777)[](bg:#FF00FF fg:bold #FFFFFF)[](#FF00FF)"
-vimcmd_replace_one_symbol = "[🭬](bg:purpe fg:bold #777777)[](bg:#FF00FF fg:bold #FFFFFF)[](#FF00FF)"
+success_symbol = "[](bg:#00FF00 fg:bold #777777)[ ✔](bg:#00FF00 fg:bold #FFFFFF)[](#00FF00)"
+error_symbol = "[](bg:#FF0000 fg:bold #777777)[ ✘](bg:#FF0000 fg:bold #FFFFFF)[](#FF0000)"
+vimcmd_symbol = "[](bg:#00FF00 fg:bold #777777)[ ](bg:#00FF00 fg:bold #FFFFFF)[](#00FF00)"
+vimcmd_visual_symbol = "[](bg:#FFFF00 fg:bold #777777)[ ](bg:#FFFF00 fg:bold #FFFFFF)[](#FFFF00)"
+vimcmd_replace_symbol = "[](bg:purpe fg:bold #777777)[ ](bg:#FF00FF fg:bold #FFFFFF)[](#FF00FF)"
+vimcmd_replace_one_symbol = "[](bg:purpe fg:bold #777777)[ ](bg:#FF00FF fg:bold #FFFFFF)[](#FF00FF)"
 disabled = false
 
 [cmake]
@@ -135,7 +135,7 @@ detect_folders = []
 
 [cmd_duration]
 min_time = 1
-format = "[🭬](bg:#555555 fg:#777777)[ $duration]($style)[🭨](bg:#555555 fg:#777777)"
+format = "[](bg:#555555 fg:#777777)[ $duration]($style)[](bg:#555555 fg:#777777)"
 style = "bg:#555555 fg:bold #FFFFFF"
 show_milliseconds = false
 disabled = false
@@ -858,7 +858,7 @@ detect_extensions = ["sbt", "scala"]
 detect_files = [".scalaenv", ".sbtenv", "build.sbt"]
 detect_folders = [".metals"]
 [shell]
-format = "[🭬](bg:#000000 fg:#777777)[$indicator]($style)[🭨](bg:#000000 fg:#777777)"
+format = "[](bg:#000000 fg:#777777)[$indicator]($style)[](bg:#000000 fg:#777777)"
 
 bash_indicator = "#!"
 fish_indicator = " "
