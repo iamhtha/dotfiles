@@ -1311,4 +1311,13 @@ wk.add({
 		noremap = true,
 		silent = true,
 	},
+	-- Transparent
+	{
+		"<leader>b",
+		"<cmd>TransparentToggle<cr>",
+		mode = { "n" },
+		desc = "Toggle transparency (background)",
+		noremap = true,
+		silent = true,
+	},
 })

@@ -243,6 +243,7 @@ Keymaps are registered buffer-locally via `on_attach` in `lua/plugins/git.lua`.
 | `<A-t>`         | n, i, v, s | Toggle Twilight (focus mode)            |
 | `<cr>`          | n, v       | Jump within visible lines (mini.jump2d) |
 | `<A-1>`–`<A-0>` | i, s       | Accept 1st–10th completion item         |
+| `<leader>b`     | n          | Toggle transparency                     |
 
 ## DAP Sign Legend
 
